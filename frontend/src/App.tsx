@@ -3,6 +3,10 @@ import { DroneViewCard } from './components/DroneViewCard';
 import styled from '@emotion/styled';
 import 'animate.css';
 import { useInViewAnimation } from './hooks/useInViewAnimation';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const LandImage = styled('img')({
   height: 350,
@@ -116,6 +120,18 @@ const PriceSection = styled('div')({
   }
 })
 
+const images = [
+  'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44%20(2).jpeg',
+  'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44%20(3).jpeg',
+  'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44%20(4).jpeg',
+  'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44%20(5).jpeg',
+  'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44.jpeg',
+  'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.45%20(1).jpeg',
+  'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.45%20(2).jpeg',
+  'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.45%20(3).jpeg',
+  'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.45.jpeg'
+];
+
 function App() {
   const { ref: landTitleRef, isVisible: isLandTitleVisible } = useInViewAnimation();
   const { ref: landContentRef, isVisible: isLandContentVisible } = useInViewAnimation();
@@ -176,6 +192,19 @@ function App() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </div>
       </PriceSection>
+
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        spaceBetween={0}
+        slidesPerView={2}
+      >
+        {images.map((src, index) => (
+          <SwiperSlide key={index}>
+            <img src={src} style={{ width: '100%', height: '300', objectFit: 'cover' }} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   )
 }
