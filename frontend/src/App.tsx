@@ -116,12 +116,6 @@ const PriceSection = styled('div')({
   }
 })
 
-const PriceDescription = styled('div')({
-  '@media (max-width: 850px)': {
-    textAlign: 'center'
-  }
-})
-
 function App() {
   const { ref: landTitleRef, isVisible: isLandTitleVisible } = useInViewAnimation();
   const { ref: landContentRef, isVisible: isLandContentVisible } = useInViewAnimation();
