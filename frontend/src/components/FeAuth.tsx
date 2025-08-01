@@ -15,7 +15,6 @@ const location = useLocation();
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const token = params.get('t');
-    console.log({ token })
     if (!token) {
       navigate('/unauthorized');
       return;
