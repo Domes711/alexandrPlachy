@@ -7,7 +7,7 @@ RUN npm run build
 
 # 🚀 Serve with Nginx
 FROM nginx:stable-alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html/milena/
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 CMD ["nginx", "-g", "daemon off;"]

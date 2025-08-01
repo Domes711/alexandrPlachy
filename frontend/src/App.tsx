@@ -8,6 +8,12 @@ function App() {
     const video = videoRef.current;
     if (!video) return;
 
+    const timeout = setTimeout(() => {
+      video.play().catch((err) => {
+        console.error("Nepodařilo se spustit video:", err);
+      });
+    }, 1000); // 1 sekunda
+
     const handleCanPlayThrough = () => {
       video.play(); // automatické spuštění
     };
@@ -20,6 +26,7 @@ function App() {
     video.addEventListener('waiting', handleWaiting);
 
     return () => {
+      clearTimeout(timeout);
       video.removeEventListener('canplaythrough', handleCanPlayThrough);
       video.removeEventListener('waiting', handleWaiting);
     };
@@ -31,9 +38,9 @@ function App() {
         <video
           ref={videoRef}
           src="https://storage.googleapis.com/milena-a/DJI_0095_1080p_crf22.mp4"
-          autoPlay
-          muted
           loop
+          muted
+          autoPlay
           poster='https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44.jpeg'
           playsInline
           style={{
