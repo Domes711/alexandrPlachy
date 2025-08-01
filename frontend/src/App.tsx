@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import './App.css'
+import { FeAuth } from './components/FeAuth';
 
 function App() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -33,7 +34,8 @@ function App() {
   }, []);
 
   return (
-    <>
+    <FeAuth>
+      <>
       <div style={{ position: "relative", display: 'flex', justifyContent: 'center', alignItems: 'center', width: "100%", height: "100vh", overflow: "hidden", backgroundColor: "#0000004a" }}>
         <video
           ref={videoRef}
@@ -58,8 +60,8 @@ function App() {
           <p style={{ fontSize: 18}}>Stromořadí č.p. 988, Hranice</p>
         </div>
       </div>
-      <div>this is test</div>
-    </>
+      </>
+    </FeAuth>
   )
 }
 
