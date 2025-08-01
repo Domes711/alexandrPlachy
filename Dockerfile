@@ -1,14 +1,13 @@
-# 1️⃣ Build React app
+# 🧱 Build stage
 FROM node:18 AS builder
 WORKDIR /app
-COPY frontend/ ./
+COPY . .
 RUN npm install
 RUN npm run build
 
-# 2️⃣ Serve with Nginx
+# 🚀 Serve with Nginx
 FROM nginx:stable-alpine
-COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /app/dist /usr/share/nginx/html
-# nebo: COPY --from=builder /app/build /usr/share/nginx/html  # pro CRA
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

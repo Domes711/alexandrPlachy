@@ -34,6 +34,7 @@ function App() {
           autoPlay
           muted
           loop
+          poster='https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44.jpeg'
           playsInline
           style={{
             position: "absolute",
