@@ -5,7 +5,9 @@ import 'animate.css';
 import { useInViewAnimation } from './hooks/useInViewAnimation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+// @ts-ignore
 import 'swiper/css';
+// @ts-ignore
 import 'swiper/css/navigation';
 
 const LandImage = styled('img')({
