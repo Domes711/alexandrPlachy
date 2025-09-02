@@ -30,7 +30,7 @@ const StyledBox = styled('div')<{ x: number, y: number, width: number, height: n
   }
 }));
 
-export const Box = ({ x, y, width, height, color, onClick, id, title }: RectProps) => {
+export const Box = ({ x, y, width, height, color, onClick, id }: RectProps) => {
 
   return (
     <>

@@ -13,10 +13,10 @@ const Wrapper = styled('div')<{ height: number, width: number }>(({ height, widt
   position: 'relative',
 }));
 
-const Image = styled('img')<{ height: number, width: number }>(({ height, width }) => ({
-  width: width,
-  height: height,
-}));
+// const Image = styled('img')<{ height: number, width: number }>(({ height, width }) => ({
+//   width: width,
+//   height: height,
+// }));
 
 const HouseFloor = styled('div')({
   width: 530,

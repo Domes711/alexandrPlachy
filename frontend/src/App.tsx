@@ -69,18 +69,18 @@ const TextWrapper = styled('div')({
 
 })
 
-const Price = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
+// const Price = styled('div')({
+//   display: 'flex',
+//   flexDirection: 'column',
 
-  '@media (max-width: 850px)': {
-    flexDirection: 'row',
-    alignItems: 'end',
-    gap: 12,
-    marginBottom: 24,
-    marginTop: 24
-  }
-})
+//   '@media (max-width: 850px)': {
+//     flexDirection: 'row',
+//     alignItems: 'end',
+//     gap: 12,
+//     marginBottom: 24,
+//     marginTop: 24
+//   }
+// })
 
 const Icon = styled('img')({
   height: 35
