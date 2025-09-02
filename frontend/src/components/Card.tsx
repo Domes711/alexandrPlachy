@@ -8,7 +8,9 @@ const Wrapper = styled('div')({
   boxShadow: '3px 3px 38px -15px rgba(0,0,0,1)',
   maxWidth: 500,
   borderRadius: 12,
-  backgroundColor: 'white'
+  backgroundColor: '#000000ad',
+  color: 'white',
+  gap: 12
 })
 
 const Title = styled('div')({

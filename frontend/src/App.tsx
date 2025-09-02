@@ -219,7 +219,7 @@ function App() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </div>
       </PriceSection> */}
-      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignContent: 'center', marginTop: 50, alignItems: 'start', gap: 40, padding: 20, backgroundImage: 'url(./house-back.jpg)' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignContent: 'center', marginTop: 50, alignItems: 'start', gap: 40, padding: 20, backgroundImage: 'url(./house-back.jpeg)' }}>
         <div style={{ display: 'flex', justifyContent: 'start' }}>
           <Card title="Třetí patro" description="Třetí nadzemní podlaží tvoří čtyři pokoje, úklidová místnost a chodba. Součástí je také možnost využití krovu, který nabízí další potenciál pro rozšíření či úpravy dle potřeb budoucího vlastníka." />
         </div>
