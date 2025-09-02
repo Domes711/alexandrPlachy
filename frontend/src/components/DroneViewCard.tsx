@@ -40,7 +40,7 @@ export const DroneViewCard = () => {
     <Wrapper>
       <video
         ref={videoRef}
-        src="https://storage.googleapis.com/milena-a/DJI_0095_1080p_crf22.mp4"
+        src="https://storage.googleapis.com/milena-a/drop.mov"
         loop
         muted
         autoPlay
@@ -56,8 +56,8 @@ export const DroneViewCard = () => {
           zIndex: -1,
         }}
       />
-      <div style={{ position: "relative", zIndex: 1, color: "white", textAlign: "center" }}>
-        <p style={{ fontSize: 55, fontWeight: 500, marginBottom: 0 }}>Rodinný dům dvořákovo</p>
+      <div style={{ position: "relative", zIndex: 1, color: "white", textAlign: "center", padding: '0px 45px 45px 45px' }}>
+        <p style={{ fontSize: 75, fontWeight: 500, marginBottom: 0 }}>Vila Milena</p>
         <p style={{ fontSize: 18 }}>Stromořadí č.p. 988, Hranice</p>
       </div>
     </Wrapper>
