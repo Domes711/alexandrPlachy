@@ -9,7 +9,6 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 // @ts-ignore
 import 'swiper/css/navigation';
-import { VirtualTour } from './components/VirtualTour';
 import { Card } from './components/Card';
 
 const LandImage = styled('img')({
@@ -104,25 +103,25 @@ const SectionHouse = styled(Section)({
   }
 })
 
-const PriceSection = styled('div')({
-  backgroundColor: '#000000d9',
-  marginTop: 64,
-  minHeight: 200,
-  color: 'white',
-  alignItems: 'center',
-  display: 'flex',
-  justifyContent: 'space-evenly',
+// const PriceSection = styled('div')({
+//   backgroundColor: '#000000d9',
+//   marginTop: 64,
+//   minHeight: 200,
+//   color: 'white',
+//   alignItems: 'center',
+//   display: 'flex',
+//   justifyContent: 'space-evenly',
 
-  '@media (max-width: 1000px)': {
-    justifyContent: 'space-between',
-    padding: '24px 24px'
-  },
+//   '@media (max-width: 1000px)': {
+//     justifyContent: 'space-between',
+//     padding: '24px 24px'
+//   },
 
-  '@media (max-width: 850px)': {
-    flexDirection: 'column',
-    justifyContent: 'center',
-  }
-})
+//   '@media (max-width: 850px)': {
+//     flexDirection: 'column',
+//     justifyContent: 'center',
+//   }
+// })
 
 const images = [
   'https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44%20(2).jpeg',

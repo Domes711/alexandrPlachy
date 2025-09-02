@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { Box } from "./Box";
-import { useVirtualTour, type House } from "../hooks/useVirtualTour";
+import { type House } from "../hooks/useVirtualTour";
 import { useState } from "react";
 
 export type VirtualTourProps = {
