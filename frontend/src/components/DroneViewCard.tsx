@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Wrapper = styled('div')({
   position: "relative",
@@ -12,23 +12,52 @@ const Wrapper = styled('div')({
   backgroundColor: "#0000004a"
 });
 
+const PlayButton = styled('button')({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  zIndex: 2,
+  backgroundColor: 'rgba(0, 0, 0, 0.7)',
+  color: 'white',
+  border: 'none',
+  borderRadius: '50%',
+  width: '80px',
+  height: '80px',
+  fontSize: '24px',
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  '&:hover': {
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+  }
+});
 export const DroneViewCard = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showPlayButton, setShowPlayButton] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleCanPlayThrough = () => {
-      video.play();
+    const handlePlay = () => {
+      setIsPlaying(true);
+      setShowPlayButton(false);
     };
 
-    const handleWaiting = () => {
-      video.pause();
+    const handlePause = () => {
+      setIsPlaying(false);
+      setShowPlayButton(true);
     };
 
-    video.addEventListener('canplaythrough', handleCanPlayThrough);
-    video.addEventListener('waiting', handleWaiting);
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setShowPlayButton(true);
+    };
+
+    video.addEventListener('play', handlePlay);
 
     return () => {
       video.removeEventListener('canplaythrough', handleCanPlayThrough);
@@ -46,6 +75,7 @@ export const DroneViewCard = () => {
         autoPlay
         poster='https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44.jpeg'
         playsInline
+        preload="auto"
         style={{
           position: "absolute",
           top: 0,
