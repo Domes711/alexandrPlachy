@@ -60,8 +60,9 @@ export const DroneViewCard = () => {
     video.addEventListener('play', handlePlay);
 
     return () => {
-      video.removeEventListener('canplaythrough', handleCanPlayThrough);
-      video.removeEventListener('waiting', handleWaiting);
+      video.removeEventListener('play', handlePlay);
+      video.removeEventListener('pause', handlePause);
+      video.removeEventListener('ended', handleEnded);
     };
   }, []);
 
