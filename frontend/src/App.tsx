@@ -387,6 +387,150 @@ const MilenkaIcon = styled('div')({
   textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
 })
 
+const PlansSection = styled('div')({
+  background: 'linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #2c2c2c 100%)',
+  color: 'white',
+  padding: '80px 24px',
+  position: 'relative',
+  overflow: 'hidden',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '1px',
+    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.5), transparent)',
+  },
+})
+
+const PlansContainer = styled('div')({
+  maxWidth: 1200,
+  margin: '0 auto',
+  textAlign: 'center'
+})
+
+const PlansTitle = styled('h1')({
+  fontSize: 48,
+  fontWeight: 700,
+  marginBottom: 24,
+  color: '#f8f9fa',
+  textShadow: '0 4px 16px rgba(0,0,0,0.8)',
+  letterSpacing: '1px',
+
+  '@media (max-width: 768px)': {
+    fontSize: 36
+  }
+})
+
+const PlansSubtitle = styled('p')({
+  fontSize: 18,
+  lineHeight: 1.6,
+  color: '#d1d5db',
+  marginBottom: 48,
+  maxWidth: 600,
+  margin: '0 auto 48px auto',
+  textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)'
+})
+
+const PlansGrid = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
+  gap: 40,
+  marginTop: 48,
+
+  '@media (max-width: 1100px)': {
+    gridTemplateColumns: '1fr',
+    gap: 32
+  }
+})
+
+const PlanCard = styled('div')({
+  backdropFilter: 'blur(10px)',
+  background: 'linear-gradient(145deg, #1e1e1e, #2a2a2a)',
+  borderRadius: 20,
+  padding: 32,
+  boxShadow: '0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+  transition: 'all 0.3s ease',
+  border: '1px solid rgba(184, 140, 153, 0.3)',
+  position: 'relative',
+  overflow: 'hidden',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '3px',
+    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.8), transparent)',
+  },
+
+  '&:hover': {
+    transform: 'translateY(-8px) scale(1.02)',
+    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(184, 140, 153, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+    borderColor: 'rgba(184, 140, 153, 0.5)',
+  }
+})
+
+const PlanCardTitle = styled('h3')({
+  fontSize: 28,
+  fontWeight: 700,
+  color: '#f8f9fa',
+  marginBottom: 20,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 16,
+  textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)'
+})
+
+const PlanIcon = styled('div')({
+  width: 48,
+  height: 48,
+  borderRadius: '12px',
+  background: 'linear-gradient(135deg, #b88c99, #d4a5b3)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: 20,
+  color: 'white',
+  fontWeight: 'bold',
+  boxShadow: '0 6px 16px rgba(184, 140, 153, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+  textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
+})
+
+const PlanImage = styled('img')({
+  width: '100%',
+  height: 300,
+  objectFit: 'cover',
+  borderRadius: 12,
+  marginBottom: 20,
+  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
+  transition: 'all 0.3s ease',
+
+  '&:hover': {
+    transform: 'scale(1.05)',
+    boxShadow: '0 12px 32px rgba(0, 0, 0, 0.4)'
+  }
+})
+
+const PlanDetails = styled('div')({
+  textAlign: 'left',
+  fontSize: 16,
+  lineHeight: 1.6,
+  color: '#d1d5db',
+
+  '& strong': {
+    color: '#b88c99',
+    fontWeight: 600
+  },
+
+  '& p': {
+    margin: '12px 0'
+  }
+})
 //   backgroundColor: '#000000d9',
 //   marginTop: 64,
 //   minHeight: 200,
@@ -657,6 +801,54 @@ function App() {
           </MilenkaGrid>
         </MilenkaContainer>
       </MilenkaSection>
+      
+      <PlansSection>
+        <PlansContainer>
+          <PlansTitle>Plány a rozměry</PlansTitle>
+          <PlansSubtitle>
+            Detailní přehled velikosti pozemku a dispozičního řešení domu
+          </PlansSubtitle>
+          
+          <PlansGrid>
+            <PlanCard>
+              <PlanCardTitle>
+                <PlanIcon>🏞️</PlanIcon>
+                Plán pozemku
+              </PlanCardTitle>
+              <PlanImage 
+                src="https://storage.googleapis.com/milena-a/plan-left.png" 
+                alt="Plán pozemku"
+              />
+              <PlanDetails>
+                <p><strong>Celková výměra:</strong> 2 634 m²</p>
+                <p><strong>Složení:</strong> Tři samostatné parcely</p>
+                <p><strong>Využití:</strong> Parkování, občerstvení Milenka s venkovním posezením</p>
+                <p><strong>Potenciál:</strong> Široké možnosti dalšího rozvoje a využití</p>
+                <p>Pozemek nabízí výjimečné možnosti pro komerční i rezidenční využití díky své strategické poloze a velikosti.</p>
+              </PlanDetails>
+            </PlanCard>
+
+            <PlanCard>
+              <PlanCardTitle>
+                <PlanIcon>🏠</PlanIcon>
+                Dispozice domu
+              </PlanCardTitle>
+              <PlanImage 
+                src="https://storage.googleapis.com/milena-a/house-front.jpeg" 
+                alt="Dispozice domu"
+              />
+              <PlanDetails>
+                <p><strong>Suterén:</strong> Industriální design s epoxidovým stolem</p>
+                <p><strong>1. NP:</strong> Rekonstruovaný byt 108 m² + 4 pokoje</p>
+                <p><strong>2. NP:</strong> 6 pokojů, 3 s vlastním sociálním zázemím</p>
+                <p><strong>3. NP:</strong> 4 pokoje + využitelný krov</p>
+                <p><strong>Technologie:</strong> Fotovoltaika, tepelné čerpadlo, moderní vytápění</p>
+                <p>Dům kombinuje historický charakter s moderními technologiemi a nabízí flexibilní využití pro bydlení i podnikání.</p>
+              </PlanDetails>
+            </PlanCard>
+          </PlansGrid>
+        </PlansContainer>
+      </PlansSection>
       
             <Swiper
         modules={[Navigation]}
