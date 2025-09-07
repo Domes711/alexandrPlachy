@@ -404,7 +404,7 @@ const MilenkaIcon = styled('div')({
 })
 
 const LandSection = styled('div')({
-  background: 'linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%)',
+  background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)',
   color: 'white',
   padding: '80px 24px',
   position: 'relative',
@@ -417,7 +417,7 @@ const LandSection = styled('div')({
     left: 0,
     right: 0,
     height: '1px',
-    background: 'linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.5), transparent)',
+    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.5), transparent)',
   },
 })
 
@@ -431,7 +431,7 @@ const LandTitle = styled('h1')({
   fontSize: 48,
   fontWeight: 700,
   marginBottom: 32,
-  color: '#3498db',
+  color: '#b88c99',
   textShadow: '0 4px 16px rgba(0,0,0,0.8)',
   letterSpacing: '1px',
 
@@ -469,12 +469,12 @@ const LandGrid = styled('div')({
 
 const LandCard = styled('div')({
   backdropFilter: 'blur(5px)',
-  background: 'linear-gradient(145deg, #34495eed, #2c3e50ed)',
+  background: 'linear-gradient(145deg, #1e1e1eed, #2a2a2aed)',
   borderRadius: 16,
   padding: 32,
   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
   transition: 'all 0.3s ease',
-  border: '1px solid rgba(52, 152, 219, 0.2)',
+  border: '1px solid rgba(184, 140, 153, 0.2)',
   position: 'relative',
   overflow: 'hidden',
   textAlign: 'left',
@@ -486,13 +486,13 @@ const LandCard = styled('div')({
     left: 0,
     width: '100%',
     height: '2px',
-    background: 'linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.6), transparent)',
+    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.6), transparent)',
   },
 
   '&:hover': {
     transform: 'translateY(-8px) scale(1.02)',
-    boxShadow: '0 16px 48px rgba(0, 0, 0, 0.4), 0 0 20px rgba(52, 152, 219, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-    borderColor: 'rgba(52, 152, 219, 0.4)',
+    boxShadow: '0 16px 48px rgba(0, 0, 0, 0.4), 0 0 20px rgba(184, 140, 153, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+    borderColor: 'rgba(184, 140, 153, 0.4)',
   }
 })
 
@@ -519,14 +519,14 @@ const LandIcon = styled('div')({
   width: 40,
   height: 40,
   borderRadius: '8px',
-  background: 'linear-gradient(135deg, #3498db, #5dade2)',
+  background: 'linear-gradient(135deg, #b88c99, #d4a5b3)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: 18,
   color: 'white',
   fontWeight: 'bold',
-  boxShadow: '0 4px 12px rgba(52, 152, 219, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+  boxShadow: '0 4px 12px rgba(184, 140, 153, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
   textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
 })
 
@@ -737,6 +737,57 @@ function App() {
         </div>
         </TextWrapper>
       </SectionHouse>
+      
+      <LandSection>
+        <LandContainer>
+          <LandTitle>Pozemek</LandTitle>
+          <LandSubtitle>
+            Rozlehlý pozemek s výbornou polohou a širokými možnostmi využití
+          </LandSubtitle>
+          
+          <LandGrid>
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>📐</LandIcon>
+                Celková výměra
+              </LandCardTitle>
+              <LandCardDescription>
+                Pozemek o <strong>celkové výměře 2 634 m²</strong> je tvořen třemi samostatnými parcelami, což nabízí flexibilitu při případném rozdělení nebo různém využití jednotlivých částí.
+              </LandCardDescription>
+            </LandCard>
+
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>🚗</LandIcon>
+                Současné využití
+              </LandCardTitle>
+              <LandCardDescription>
+                V současnosti slouží pozemek především k <strong>parkování</strong> a k provozu občerstvení Milenka s venkovním posezením. Toto uspořádání vytváří příjemnou atmosféru pro hosty a zajišťuje dostatečné parkovací kapacity.
+              </LandCardDescription>
+            </LandCard>
+
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>🌳</LandIcon>
+                Potenciál rozvoje
+              </LandCardTitle>
+              <LandCardDescription>
+                Díky své velikosti a strategické poloze nabízí pozemek <strong>široké možnosti budoucího využití</strong> - od rozšíření stávajícího provozu přes výstavbu dalších objektů až po vytvoření reprezentativních zahrad či rekreačních ploch.
+              </LandCardDescription>
+            </LandCard>
+
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>📍</LandIcon>
+                Strategická poloha
+              </LandCardTitle>
+              <LandCardDescription>
+                Pozemek se nachází v <strong>atraktivní lokalitě</strong> s výbornou dostupností a viditelností. Blízkost lázeňské promenády a centra města z něj činí ideální místo pro komerční i rezidenční využití.
+              </LandCardDescription>
+            </LandCard>
+          </LandGrid>
+        </LandContainer>
+      </LandSection>
             <CitySection>
         <CityContainer>
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -804,57 +855,6 @@ function App() {
           </MilenkaGrid>
         </MilenkaContainer>
       </MilenkaSection>
-      
-      <LandSection>
-        <LandContainer>
-          <LandTitle>Pozemek</LandTitle>
-          <LandSubtitle>
-            Rozlehlý pozemek s výbornou polohou a širokými možnostmi využití
-          </LandSubtitle>
-          
-          <LandGrid>
-            <LandCard>
-              <LandCardTitle>
-                <LandIcon>📐</LandIcon>
-                Celková výměra
-              </LandCardTitle>
-              <LandCardDescription>
-                Pozemek o <strong>celkové výměře 2 634 m²</strong> je tvořen třemi samostatnými parcelami, což nabízí flexibilitu při případném rozdělení nebo různém využití jednotlivých částí.
-              </LandCardDescription>
-            </LandCard>
-
-            <LandCard>
-              <LandCardTitle>
-                <LandIcon>🚗</LandIcon>
-                Současné využití
-              </LandCardTitle>
-              <LandCardDescription>
-                V současnosti slouží pozemek především k <strong>parkování</strong> a k provozu občerstvení Milenka s venkovním posezením. Toto uspořádání vytváří příjemnou atmosféru pro hosty a zajišťuje dostatečné parkovací kapacity.
-              </LandCardDescription>
-            </LandCard>
-
-            <LandCard>
-              <LandCardTitle>
-                <LandIcon>🌳</LandIcon>
-                Potenciál rozvoje
-              </LandCardTitle>
-              <LandCardDescription>
-                Díky své velikosti a strategické poloze nabízí pozemek <strong>široké možnosti budoucího využití</strong> - od rozšíření stávajícího provozu přes výstavbu dalších objektů až po vytvoření reprezentativních zahrad či rekreačních ploch.
-              </LandCardDescription>
-            </LandCard>
-
-            <LandCard>
-              <LandCardTitle>
-                <LandIcon>📍</LandIcon>
-                Strategická poloha
-              </LandCardTitle>
-              <LandCardDescription>
-                Pozemek se nachází v <strong>atraktivní lokalitě</strong> s výbornou dostupností a viditelností. Blízkost lázeňské promenády a centra města z něj činí ideální místo pro komerční i rezidenční využití.
-              </LandCardDescription>
-            </LandCard>
-          </LandGrid>
-        </LandContainer>
-      </LandSection>
       
             <Swiper
         modules={[Navigation]}
