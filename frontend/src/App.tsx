@@ -403,6 +403,119 @@ const MilenkaIcon = styled('div')({
   textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
 })
 
+const FloorPlanSection = styled('div')({
+  backgroundColor: '#f8f9fa',
+  padding: '80px 24px',
+  fontFamily: 'Arial, sans-serif'
+})
+
+const FloorPlanContainer = styled('div')({
+  maxWidth: 1400,
+  margin: '0 auto'
+})
+
+const FloorPlanHeader = styled('div')({
+  marginBottom: 60,
+  textAlign: 'left'
+})
+
+const FloorPlanNumber = styled('div')({
+  fontSize: 48,
+  fontWeight: 'bold',
+  color: '#2c3e50',
+  marginBottom: 8
+})
+
+const FloorPlanTitle = styled('div')({
+  fontSize: 24,
+  color: '#7f8c8d',
+  fontWeight: 300,
+  letterSpacing: '2px',
+  textTransform: 'uppercase'
+})
+
+const FloorPlanGrid = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: 40,
+  marginBottom: 60,
+
+  '@media (max-width: 1200px)': {
+    gridTemplateColumns: '1fr',
+    gap: 30
+  }
+})
+
+const FloorPlanCard = styled('div')({
+  backgroundColor: 'white',
+  borderRadius: 8,
+  overflow: 'hidden',
+  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+
+  '&:hover': {
+    transform: 'translateY(-4px)',
+    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)'
+  }
+})
+
+const FloorPlanImage = styled('div')({
+  height: 300,
+  backgroundColor: '#ecf0f1',
+  backgroundImage: 'url("data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" stroke="%23bdc3c7" stroke-width="1"%3E%3Cpath d="M10,10 L90,10 L90,90 L10,90 Z"/%3E%3Cpath d="M30,10 L30,90"/%3E%3Cpath d="M70,10 L70,90"/%3E%3Cpath d="M10,30 L90,30"/%3E%3Cpath d="M10,70 L90,70"/%3E%3C/g%3E%3C/svg%3E")',
+  backgroundRepeat: 'repeat',
+  backgroundSize: '50px 50px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '#95a5a6',
+  fontSize: 14,
+  fontWeight: 500
+})
+
+const FloorPlanContent = styled('div')({
+  padding: 24
+})
+
+const FloorPlanCardTitle = styled('h3')({
+  fontSize: 18,
+  fontWeight: 600,
+  color: '#2c3e50',
+  marginBottom: 12,
+  margin: 0
+})
+
+const FloorPlanDescription = styled('p')({
+  fontSize: 14,
+  lineHeight: 1.6,
+  color: '#7f8c8d',
+  margin: '12px 0 0 0'
+})
+
+const FloorPlanSpecs = styled('div')({
+  display: 'flex',
+  gap: 20,
+  marginTop: 16,
+  fontSize: 12,
+  color: '#95a5a6'
+})
+
+const FloorPlanSpec = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 4
+})
+
+const SpecLabel = styled('span')({
+  fontWeight: 500,
+  textTransform: 'uppercase',
+  letterSpacing: '0.5px'
+})
+
+const SpecValue = styled('span')({
+  color: '#2c3e50',
+  fontWeight: 600
+})
 const LandSection = styled('div')({
   background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)',
   color: 'white',
@@ -738,6 +851,64 @@ function App() {
         </TextWrapper>
       </SectionHouse>
       
+      <FloorPlanSection>
+        <FloorPlanContainer>
+          <FloorPlanHeader>
+            <FloorPlanNumber>1</FloorPlanNumber>
+            <FloorPlanTitle>ALFERON INSECPT</FloorPlanTitle>
+          </FloorPlanHeader>
+          
+          <FloorPlanGrid>
+            <FloorPlanCard>
+              <FloorPlanImage>
+                Půdorys přízemí
+              </FloorPlanImage>
+              <FloorPlanContent>
+                <FloorPlanCardTitle>Wir sagen Aufwand? Cimas</FloorPlanCardTitle>
+                <FloorPlanDescription>
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                </FloorPlanDescription>
+                <FloorPlanSpecs>
+                  <FloorPlanSpec>
+                    <SpecLabel>Plocha</SpecLabel>
+                    <SpecValue>108 m²</SpecValue>
+                  </FloorPlanSpec>
+                  <FloorPlanSpec>
+                    <SpecLabel>Rok</SpecLabel>
+                    <SpecValue>2023</SpecValue>
+                  </FloorPlanSpec>
+                </FloorPlanSpecs>
+              </FloorPlanContent>
+            </FloorPlanCard>
+
+            <FloorPlanCard>
+              <FloorPlanImage>
+                Půdorys 1. patra
+              </FloorPlanImage>
+              <FloorPlanContent>
+                <FloorPlanCardTitle>Building Garland mit Programmierung Castile</FloorPlanTitle>
+                <FloorPlanDescription>
+                  Wir sagen für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                </FloorPlanDescription>
+                <FloorPlanSpecs>
+                  <FloorPlanSpec>
+                    <SpecLabel>Plocha</SpecLabel>
+                    <SpecValue>95 m²</SpecValue>
+                  </FloorPlanSpec>
+                  <FloorPlanSpec>
+                    <SpecLabel>Rok</SpecLabel>
+                    <SpecValue>2023</SpecValue>
+                  </FloorPlanSpec>
+                </FloorPlanSpecs>
+              </FloorPlanContent>
+            </FloorPlanCard>
       <LandSection>
         <LandContainer>
           <LandTitle>Pozemek</LandTitle>
@@ -797,7 +968,59 @@ function App() {
           </CitySubtitle>
           </div>
 
+            <FloorPlanCard>
+              <FloorPlanImage>
+                Půdorys 2. patra
+              </FloorPlanImage>
+              <FloorPlanContent>
+                <FloorPlanCardTitle>Area Strukturen Platz</FloorPlanCardTitle>
+                <FloorPlanDescription>
+                  Platz Strukturen Wir sagen mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                </FloorPlanDescription>
+                <FloorPlanSpecs>
+                  <FloorPlanSpec>
+                    <SpecLabel>Plocha</SpecLabel>
+                    <SpecValue>87 m²</SpecValue>
+                  </FloorPlanSpec>
+                  <FloorPlanSpec>
+                    <SpecLabel>Rok</SpecLabel>
+                    <SpecValue>2023</SpecValue>
+                  </FloorPlanSpec>
+                </FloorPlanSpecs>
+              </FloorPlanContent>
+            </FloorPlanCard>
 
+            <FloorPlanCard>
+              <FloorPlanImage>
+                Půdorys suterénu
+              </FloorPlanImage>
+              <FloorPlanContent>
+                <FloorPlanCardTitle>Bau? Platz</FloorPlanCardTitle>
+                <FloorPlanDescription>
+                  Platz für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                  Aufwand für eine zeit mit Aufwand für zu sind
+                </FloorPlanDescription>
+                <FloorPlanSpecs>
+                  <FloorPlanSpec>
+                    <SpecLabel>Plocha</SpecLabel>
+                    <SpecValue>72 m²</SpecValue>
+                  </FloorPlanSpec>
+                  <FloorPlanSpec>
+                    <SpecLabel>Rok</SpecLabel>
+                    <SpecValue>2023</SpecValue>
+                  </FloorPlanSpec>
+                </FloorPlanSpecs>
+              </FloorPlanContent>
+            </FloorPlanCard>
+          </FloorPlanGrid>
+        </FloorPlanContainer>
+      </FloorPlanSection>
+      
           <CityDescription>
             <p><strong>Vila Milena</strong> se nachází v srdci tohoto historického města, které je proslulé svými léčivými termálními prameny a jedinečnou atmosférou.</p>
             
