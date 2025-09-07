@@ -167,12 +167,6 @@ const FloorCard = styled('div')({
     transform: 'translateY(-4px)',
     boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  },
-
-  '@media (max-width: 768px)': {
-    width: '90%',
-    maxWidth: '350px',
-    margin: '0 auto'
   }
 })
 
@@ -472,8 +466,8 @@ function App() {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundPositionX: 'center' }}>
-      <div style={{ backgroundColor: '#00000066', width: '100%', padding: 30, display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'center' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+      <div style={{ backgroundColor: '#00000066', width: '100%', padding: 30, display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'start' }}>
+        <div style={{ display: 'flex', justifyContent: 'start', width: '100%' }}>
           <FloorCard>
             <FloorTitle>
               <FloorIcon>3</FloorIcon>
