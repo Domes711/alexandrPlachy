@@ -167,6 +167,12 @@ const FloorCard = styled('div')({
     transform: 'translateY(-4px)',
     boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  },
+
+  '@media (max-width: 768px)': {
+    margin: '0 auto',
+    width: '100%',
+    maxWidth: '350px'
   }
 })
 
@@ -618,11 +624,10 @@ function App() {
         <MilenkaContainer>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
             <img 
-              src="https://cdn.prod.website-files.com/64a713a550df5a104fd7daf7/681d1d3b442e6a6be13bb67e_logo_milenka.svg" 
+              src="https://storage.googleapis.com/milena-a/milenka-logo.svg" 
               alt="Milenka logo" 
               style={{ height: 120, filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.8))' }}
             />
-            <MilenkaTitle>Milenka</MilenkaTitle>
           </div>
           
           <MilenkaGrid>
