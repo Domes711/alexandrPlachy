@@ -403,6 +403,133 @@ const MilenkaIcon = styled('div')({
   textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
 })
 
+const LandSection = styled('div')({
+  background: 'linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%)',
+  color: 'white',
+  padding: '80px 24px',
+  position: 'relative',
+  overflow: 'hidden',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '1px',
+    background: 'linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.5), transparent)',
+  },
+})
+
+const LandContainer = styled('div')({
+  maxWidth: 1200,
+  margin: '0 auto',
+  textAlign: 'center'
+})
+
+const LandTitle = styled('h1')({
+  fontSize: 48,
+  fontWeight: 700,
+  marginBottom: 32,
+  color: '#3498db',
+  textShadow: '0 4px 16px rgba(0,0,0,0.8)',
+  letterSpacing: '1px',
+
+  '@media (max-width: 768px)': {
+    fontSize: 36
+  }
+})
+
+const LandSubtitle = styled('p')({
+  fontSize: 20,
+  fontWeight: 300,
+  marginBottom: 48,
+  color: '#ecf0f1',
+  textAlign: 'center',
+  maxWidth: 800,
+  margin: '0 auto 48px auto',
+  textShadow: '0 2px 8px rgba(0,0,0,0.7)',
+  lineHeight: 1.5,
+
+  '@media (max-width: 768px)': {
+    fontSize: 18
+  }
+})
+
+const LandGrid = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+  gap: 32,
+  marginTop: 48,
+
+  '@media (max-width: 1000px)': {
+    gridTemplateColumns: '1fr'
+  }
+})
+
+const LandCard = styled('div')({
+  backdropFilter: 'blur(5px)',
+  background: 'linear-gradient(145deg, #34495eed, #2c3e50ed)',
+  borderRadius: 16,
+  padding: 32,
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+  transition: 'all 0.3s ease',
+  border: '1px solid rgba(52, 152, 219, 0.2)',
+  position: 'relative',
+  overflow: 'hidden',
+  textAlign: 'left',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '2px',
+    background: 'linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.6), transparent)',
+  },
+
+  '&:hover': {
+    transform: 'translateY(-8px) scale(1.02)',
+    boxShadow: '0 16px 48px rgba(0, 0, 0, 0.4), 0 0 20px rgba(52, 152, 219, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+    borderColor: 'rgba(52, 152, 219, 0.4)',
+  }
+})
+
+const LandCardTitle = styled('h3')({
+  fontSize: 22,
+  fontWeight: 600,
+  color: '#f8f9fa',
+  marginBottom: 16,
+  display: 'flex',
+  alignItems: 'center',
+  gap: 12,
+  textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
+})
+
+const LandCardDescription = styled('p')({
+  fontSize: 16,
+  lineHeight: 1.6,
+  color: '#d1d5db',
+  margin: 0,
+  textShadow: '0 1px 1px rgba(0, 0, 0, 0.3)'
+})
+
+const LandIcon = styled('div')({
+  width: 40,
+  height: 40,
+  borderRadius: '8px',
+  background: 'linear-gradient(135deg, #3498db, #5dade2)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: 18,
+  color: 'white',
+  fontWeight: 'bold',
+  boxShadow: '0 4px 12px rgba(52, 152, 219, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+  textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
+})
+
 //   backgroundColor: '#000000d9',
 //   marginTop: 64,
 //   minHeight: 200,
