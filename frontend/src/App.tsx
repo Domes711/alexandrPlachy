@@ -403,10 +403,10 @@ const MilenkaIcon = styled('div')({
   textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
 })
 
-const FloorPlansSection = styled('div')({
-  background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%)',
-  color: '#2d3436',
-  padding: '100px 24px',
+const LandSection = styled('div')({
+  background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)',
+  color: 'white',
+  padding: '80px 24px',
   position: 'relative',
   overflow: 'hidden',
 
@@ -417,21 +417,22 @@ const FloorPlansSection = styled('div')({
     left: 0,
     right: 0,
     height: '1px',
-    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.3), transparent)',
+    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.5), transparent)',
   },
 })
 
-const FloorPlansContainer = styled('div')({
-  maxWidth: 1400,
+const LandContainer = styled('div')({
+  maxWidth: 1200,
   margin: '0 auto',
+  textAlign: 'center'
 })
 
-const FloorPlansTitle = styled('h1')({
+const LandTitle = styled('h1')({
   fontSize: 48,
   fontWeight: 700,
-  marginBottom: 24,
-  color: '#2d3436',
-  textAlign: 'center',
+  marginBottom: 32,
+  color: '#b88c99',
+  textShadow: '0 4px 16px rgba(0,0,0,0.8)',
   letterSpacing: '1px',
 
   '@media (max-width: 768px)': {
@@ -439,14 +440,15 @@ const FloorPlansTitle = styled('h1')({
   }
 })
 
-const FloorPlansSubtitle = styled('p')({
+const LandSubtitle = styled('p')({
   fontSize: 20,
   fontWeight: 300,
-  marginBottom: 64,
-  color: '#636e72',
+  marginBottom: 48,
+  color: '#ecf0f1',
   textAlign: 'center',
   maxWidth: 800,
-  margin: '0 auto 64px auto',
+  margin: '0 auto 48px auto',
+  textShadow: '0 2px 8px rgba(0,0,0,0.7)',
   lineHeight: 1.5,
 
   '@media (max-width: 768px)': {
@@ -454,82 +456,80 @@ const FloorPlansSubtitle = styled('p')({
   }
 })
 
-const ArchitecturalShowcase = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 80,
-})
-
-const ShowcaseItem = styled('div')({
+const LandGrid = styled('div')({
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  gap: 48,
-  alignItems: 'center',
-
-  '&:nth-of-type(even)': {
-    '& > div:first-of-type': {
-      order: 2
-    }
-  },
+  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+  gap: 32,
+  marginTop: 48,
 
   '@media (max-width: 1000px)': {
-    gridTemplateColumns: '1fr',
-    gap: 32,
-    
-    '&:nth-of-type(even)': {
-      '& > div:first-of-type': {
-        order: 0
-      }
-    }
+    gridTemplateColumns: '1fr'
   }
 })
 
-const ShowcaseImage = styled('div')({
-  position: 'relative',
+const LandCard = styled('div')({
+  backdropFilter: 'blur(5px)',
+  background: 'linear-gradient(145deg, #1e1e1eed, #2a2a2aed)',
   borderRadius: 16,
+  padding: 32,
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+  transition: 'all 0.3s ease',
+  border: '1px solid rgba(184, 140, 153, 0.2)',
+  position: 'relative',
   overflow: 'hidden',
-  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1)',
-  background: 'white',
-  padding: 24,
-  
-  '& img': {
+  textAlign: 'left',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
     width: '100%',
-    height: 'auto',
-    borderRadius: 8,
+    height: '2px',
+    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.6), transparent)',
+  },
+
+  '&:hover': {
+    transform: 'translateY(-8px) scale(1.02)',
+    boxShadow: '0 16px 48px rgba(0, 0, 0, 0.4), 0 0 20px rgba(184, 140, 153, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+    borderColor: 'rgba(184, 140, 153, 0.4)',
   }
 })
 
-const ShowcaseContent = styled('div')({
-  padding: '0 24px',
-})
-
-const ShowcaseTitle = styled('h2')({
-  fontSize: 32,
+const LandCardTitle = styled('h3')({
+  fontSize: 22,
   fontWeight: 600,
+  color: '#f8f9fa',
   marginBottom: 16,
-  color: '#2d3436',
-  lineHeight: 1.2,
-
-  '@media (max-width: 768px)': {
-    fontSize: 28
-  }
+  display: 'flex',
+  alignItems: 'center',
+  gap: 12,
+  textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
 })
 
-const ShowcaseDescription = styled('p')({
-  fontSize: 18,
+const LandCardDescription = styled('p')({
+  fontSize: 16,
   lineHeight: 1.6,
-  color: '#636e72',
-  marginBottom: 24,
-
-  '@media (max-width: 768px)': {
-    fontSize: 16
-  }
+  color: '#d1d5db',
+  margin: 0,
+  textShadow: '0 1px 1px rgba(0, 0, 0, 0.3)'
 })
 
-const ShowcaseFeatures = styled('ul')({
-  listStyle: 'none',
-  padding: 0,
-  margin: 0,
+const LandIcon = styled('div')({
+  width: 40,
+  height: 40,
+  borderRadius: '8px',
+  background: 'linear-gradient(135deg, #b88c99, #d4a5b3)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: 18,
+  color: 'white',
+  fontWeight: 'bold',
+  boxShadow: '0 4px 12px rgba(184, 140, 153, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+  textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
+})
+
 //   backgroundColor: '#000000d9',
 //   marginTop: 64,
 //   minHeight: 200,
@@ -738,56 +738,56 @@ function App() {
         </TextWrapper>
       </SectionHouse>
       
-      <FloorPlansSection>
-        <FloorPlansContainer>
-          <FloorPlansTitle>Architektonické řešení</FloorPlansTitle>
-          <FloorPlansSubtitle>
-            Moderní přístup k prostorové koncepci s důrazem na funkčnost a estetiku
-          </FloorPlansSubtitle>
+      <LandSection>
+        <LandContainer>
+          <LandTitle>Pozemek</LandTitle>
+          <LandSubtitle>
+            Rozlehlý pozemek s výbornou polohou a širokými možnostmi využití
+          </LandSubtitle>
           
-          <ArchitecturalShowcase>
-            <ShowcaseItem>
-              <ShowcaseImage>
-                <img 
-                  src="https://images.pexels.com/photos/7031406/pexels-photo-7031406.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Moderní architektonický návrh"
-                />
-              </ShowcaseImage>
-              <ShowcaseContent>
-                <ShowcaseTitle>Koncepční návrh</ShowcaseTitle>
-                <ShowcaseDescription>
-                  Architektonické řešení vychází z moderních trendů s důrazem na maximální využití prostoru 
-                  a propojení interiéru s exteriérem. Každé patro je navrženo s ohledem na specifické potřeby 
-                  a komfort budoucích obyvatel.
-                </ShowcaseDescription>
-                <ShowcaseFeatures>
-                  <ShowcaseFeature>Otevřené prostory s vysokými stropy</ShowcaseFeature>
-                  <ShowcaseFeature>Velkorysé prosklené plochy</ShowcaseFeature>
-                  <ShowcaseFeature>Optimální orientace ke světovým stranám</ShowcaseFeature>
-                  <ShowcaseFeature>Propojení s venkovními terasami</ShowcaseFeature>
-                </ShowcaseFeatures>
-              </ShowcaseContent>
-            </ShowcaseItem>
+          <LandGrid>
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>📐</LandIcon>
+                Celková výměra
+              </LandCardTitle>
+              <LandCardDescription>
+                Pozemek o <strong>celkové výměře 2 634 m²</strong> je tvořen třemi samostatnými parcelami, což nabízí flexibilitu při případném rozdělení nebo různém využití jednotlivých částí.
+              </LandCardDescription>
+            </LandCard>
 
-            <ShowcaseItem>
-              <ShowcaseImage>
-                <img 
-                  src="https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Interiérové řešení"
-                />
-              </ShowcaseImage>
-              <ShowcaseContent>
-                <ShowcaseTitle>Interiérové řešení</ShowcaseTitle>
-                <ShowcaseDescription>
-                  Vnitřní prostory jsou navrženy s důrazem na funkčnost a estetiku. Každá místnost 
-                  má své specifické určení a je optimálně využita. Materiály a barvy jsou zvoleny 
-                  tak, aby vytvářely harmonický celek.
-                </ShowcaseDescription>
-                <ShowcaseFeatures>
-                  <ShowcaseFeature>Kvalitní materiály a povrchy</ShowcaseFeature>
-                  <ShowcaseFeature>Promyšlené úložné prostory</ShowcaseFeature>
-                  <ShowcaseFeature>Moderní technické vybavení</ShowcaseFeature>
-                  <ShowcaseFeature>Flexibilní uspořádání místností</ShowcaseFeature>
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>🚗</LandIcon>
+                Současné využití
+              </LandCardTitle>
+              <LandCardDescription>
+                V současnosti slouží pozemek především k <strong>parkování</strong> a k provozu občerstvení Milenka s venkovním posezením. Toto uspořádání vytváří příjemnou atmosféru pro hosty a zajišťuje dostatečné parkovací kapacity.
+              </LandCardDescription>
+            </LandCard>
+
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>🌳</LandIcon>
+                Potenciál rozvoje
+              </LandCardTitle>
+              <LandCardDescription>
+                Díky své velikosti a strategické poloze nabízí pozemek <strong>široké možnosti budoucího využití</strong> - od rozšíření stávajícího provozu přes výstavbu dalších objektů až po vytvoření reprezentativních zahrad či rekreačních ploch.
+              </LandCardDescription>
+            </LandCard>
+
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>📍</LandIcon>
+                Strategická poloha
+              </LandCardTitle>
+              <LandCardDescription>
+                Pozemek se nachází v <strong>atraktivní lokalitě</strong> s výbornou dostupností a viditelností. Blízkost lázeňské promenády a centra města z něj činí ideální místo pro komerční i rezidenční využití.
+              </LandCardDescription>
+            </LandCard>
+          </LandGrid>
+        </LandContainer>
+      </LandSection>
             <CitySection>
         <CityContainer>
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
