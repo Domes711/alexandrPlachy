@@ -313,6 +313,22 @@ const MilenkaTitle = styled('h1')({
   }
 })
 
+const MilenkaSubtitle = styled('p')({
+  fontSize: 24,
+  fontWeight: 300,
+  marginBottom: 32,
+  color: '#d1d5db',
+  textAlign: 'center',
+  maxWidth: 800,
+  margin: '0 auto 32px auto',
+  textShadow: '0 2px 8px rgba(0,0,0,0.7)',
+  lineHeight: 1.4,
+
+  '@media (max-width: 768px)': {
+    fontSize: 20
+  }
+})
+
 const MilenkaGrid = styled('div')({
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
@@ -623,6 +639,10 @@ function App() {
               style={{ height: 120, filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.8))' }}
             />
           </div>
+          
+          <MilenkaSubtitle>
+            Registrovaná ochranná známka s etablovaným konceptem a zákaznickou základnou. Brand Milenka je k dispozici také k samostatnému prodeji.
+          </MilenkaSubtitle>
           
           <MilenkaGrid>
             <MilenkaCard>
