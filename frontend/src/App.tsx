@@ -805,6 +805,57 @@ function App() {
         </MilenkaContainer>
       </MilenkaSection>
       
+      <LandSection>
+        <LandContainer>
+          <LandTitle>Pozemek</LandTitle>
+          <LandSubtitle>
+            Rozlehlý pozemek s výbornou polohou a širokými možnostmi využití
+          </LandSubtitle>
+          
+          <LandGrid>
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>📐</LandIcon>
+                Celková výměra
+              </LandCardTitle>
+              <LandCardDescription>
+                Pozemek o <strong>celkové výměře 2 634 m²</strong> je tvořen třemi samostatnými parcelami, což nabízí flexibilitu při případném rozdělení nebo různém využití jednotlivých částí.
+              </LandCardDescription>
+            </LandCard>
+
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>🚗</LandIcon>
+                Současné využití
+              </LandCardTitle>
+              <LandCardDescription>
+                V současnosti slouží pozemek především k <strong>parkování</strong> a k provozu občerstvení Milenka s venkovním posezením. Toto uspořádání vytváří příjemnou atmosféru pro hosty a zajišťuje dostatečné parkovací kapacity.
+              </LandCardDescription>
+            </LandCard>
+
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>🌳</LandIcon>
+                Potenciál rozvoje
+              </LandCardTitle>
+              <LandCardDescription>
+                Díky své velikosti a strategické poloze nabízí pozemek <strong>široké možnosti budoucího využití</strong> - od rozšíření stávajícího provozu přes výstavbu dalších objektů až po vytvoření reprezentativních zahrad či rekreačních ploch.
+              </LandCardDescription>
+            </LandCard>
+
+            <LandCard>
+              <LandCardTitle>
+                <LandIcon>📍</LandIcon>
+                Strategická poloha
+              </LandCardTitle>
+              <LandCardDescription>
+                Pozemek se nachází v <strong>atraktivní lokalitě</strong> s výbornou dostupností a viditelností. Blízkost lázeňské promenády a centra města z něj činí ideální místo pro komerční i rezidenční využití.
+              </LandCardDescription>
+            </LandCard>
+          </LandGrid>
+        </LandContainer>
+      </LandSection>
+      
             <Swiper
         modules={[Navigation]}
         navigation
