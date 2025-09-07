@@ -385,10 +385,11 @@ function App() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </div>
       </PriceSection> */}
-      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignContent: 'center', marginTop: 0, alignItems: 'start', gap: 40, padding: 30, backgroundImage: 'url(https://storage.googleapis.com/milena-a/house-front.jpeg)', backgroundSize: 'cover',
+      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignContent: 'center', marginTop: 0, alignItems: 'start', gap: 40, backgroundImage: 'url(https://storage.googleapis.com/milena-a/house-front.jpeg)', backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundPositionX: 'center' }}>
+      <div style={{ backgroundColor: '#00000066', width: '100%', padding: 30, display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div style={{ display: 'flex', justifyContent: 'start' }}>
           <FloorCard>
             <FloorTitle>
@@ -427,6 +428,7 @@ function App() {
             Suterén domu prošel rekonstrukcí a nese industriální charakter doplněný designovými prvky. Dominantou hlavní místnosti je velký epoxidový stůl, který prostoru dodává jedinečný výraz. Zbylé části suterénu jsou v současnosti využívány převážně technicky, k dispozici je také toaleta.
           </FloorDescription>
         </FloorCard>
+        </div>
       </div>
       
       <SectionHouse style={{ backgroundImage: 'url(https://storage.googleapis.com/milena-a/house-top.jpeg)'}}>
