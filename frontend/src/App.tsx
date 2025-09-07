@@ -138,55 +138,6 @@ const TechnologyIcon = styled('div')({
   textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
 })
 
-const FloorIcon = styled('div')({
-  width: 40,
-  height: 40,
-  borderRadius: '50%',
-  backgroundColor: '#b88c99',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: 18,
-  color: 'white',
-  fontWeight: 'bold',
-  margin: 0,
-  boxShadow: '0 2px 8px rgba(184, 140, 153, 0.3)'
-})
-
-const FloorCard = styled('div')({
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  borderRadius: 16,
-  padding: 24,
-  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
-  transition: 'all 0.3s ease',
-  border: '1px solid rgba(255, 255, 255, 0.15)',
-  maxWidth: 400,
-  backdropFilter: 'blur(5px)',
-
-  '&:hover': {
-    transform: 'translateY(-4px)',
-    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  }
-})
-
-const FloorTitle = styled('h3')({
-  fontSize: 20,
-  fontWeight: 600,
-  color: '#ecf0f1',
-  marginBottom: 12,
-  margin: '0 0 12px 0',
-  display: 'flex',
-  alignItems: 'center',
-  gap: 12
-})
-
-const FloorDescription = styled('p')({
-  fontSize: 14,
-  lineHeight: 1.6,
-  color: '#bdc3c7',
-  margin: 0
-})
 
 const IntroText = styled('p')({
   fontSize: 16,
