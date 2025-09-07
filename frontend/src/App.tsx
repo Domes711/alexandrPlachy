@@ -9,40 +9,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 // @ts-ignore
 import 'swiper/css/navigation';
-import { Card } from './components/Card';
 
-const LandImage = styled('img')({
-  height: 350,
-  borderRadius: 24,
-  objectFit: 'cover',
-  borderTopLeftRadius: 0,
-  borderBottomLeftRadius: 0,
-  marginLeft: -24,
 
-  '@media (max-width: 1000px)': {
-    marginLeft: 100,
-    marginRight: -24,
-    borderRadius: 24,
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-  }
-})
-
-const HouseImage = styled('img')({
-  height: 350,
-  borderRadius: 24,
-  borderTopRightRadius: 0,
-  borderBottomRightRadius: 0,
-  objectFit: 'cover',
-
-  '@media (max-width: 1000px)': {
-    marginRight: 100,
-    marginLeft: -88,
-    borderRadius: 24,
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-  }
-})
 
 const Section = styled('div')({
   display: 'flex',
@@ -76,10 +44,6 @@ const TextWrapper = styled('div')({
 //     marginTop: 24
 //   }
 // })
-
-const Icon = styled('img')({
-  height: 35
-})
 
 const SectionHouse = styled(Section)({
   justifyContent: 'space-between',
@@ -385,10 +349,11 @@ function App() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </div>
       </PriceSection> */}
-      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignContent: 'center', marginTop: 0, alignItems: 'start', gap: 40, padding: 30, backgroundImage: 'url(https://storage.googleapis.com/milena-a/house-front.jpeg)', backgroundSize: 'cover',
+      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignContent: 'center', marginTop: 0, alignItems: 'start', gap: 40, backgroundImage: 'url(https://storage.googleapis.com/milena-a/house-front.jpeg)', backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundPositionX: 'center' }}>
+      <div style={{ backgroundColor: '#00000066', width: '100%', padding: 30, display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div style={{ display: 'flex', justifyContent: 'start' }}>
           <FloorCard>
             <FloorTitle>
@@ -427,6 +392,7 @@ function App() {
             Suterén domu prošel rekonstrukcí a nese industriální charakter doplněný designovými prvky. Dominantou hlavní místnosti je velký epoxidový stůl, který prostoru dodává jedinečný výraz. Zbylé části suterénu jsou v současnosti využívány převážně technicky, k dispozici je také toaleta.
           </FloorDescription>
         </FloorCard>
+        </div>
       </div>
       
       <SectionHouse style={{ backgroundImage: 'url(https://storage.googleapis.com/milena-a/house-top.jpeg)'}}>
