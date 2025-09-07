@@ -429,148 +429,6 @@ function App() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </div>
       </PriceSection> */}
-      <FloorsSection>
-        <FloorsContainer>
-          <FloorsTitle>Dispozice objektu</FloorsTitle>
-          <FloorsSubtitle>
-            Čtyřpodlažní objekt nabízí rozmanité možnosti využití s celkovou užitnou plochou přes 400 m²
-          </FloorsSubtitle>
-          
-          <FloorGrid>
-            <FloorCard>
-              <FloorHeader>
-                <FloorIcon>3</FloorIcon>
-                <FloorTitle>3. nadzemní podlaží</FloorTitle>
-              </FloorHeader>
-              <FloorContent>
-                <FloorDescription>
-                  Třetí nadzemní podlaží tvoří čtyři pokoje, úklidová místnost a chodba. Součástí je také možnost využití krovu, který nabízí další potenciál pro rozšíření či úpravy dle potřeb budoucího vlastníka.
-                </FloorDescription>
-                <FloorPlan>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: 16, marginBottom: 8 }}>📐</div>
-                    <div>Půdorys 3. NP</div>
-                    <div style={{ fontSize: 12, opacity: 0.7 }}>4 pokoje + krov</div>
-                  </div>
-                </FloorPlan>
-              </FloorContent>
-            </FloorCard>
-
-            <FloorCard>
-              <FloorHeader>
-                <FloorIcon>2</FloorIcon>
-                <FloorTitle>2. nadzemní podlaží</FloorTitle>
-              </FloorHeader>
-              <FloorContent>
-                <FloorDescription>
-                  Druhé nadzemní podlaží nabízí šest pokojů, přičemž tři z nich disponují vlastním sociálním zázemím. Součástí patra je také chodba, sklad a společné sociální zařízení doplněné o kuchyňku.
-                </FloorDescription>
-                <FloorPlan>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: 16, marginBottom: 8 }}>📐</div>
-                    <div>Půdorys 2. NP</div>
-                    <div style={{ fontSize: 12, opacity: 0.7 }}>6 pokojů + kuchyňka</div>
-                  </div>
-                </FloorPlan>
-              </FloorContent>
-            </FloorCard>
-      
-      <SectionHouse style={{ backgroundImage: 'url(https://storage.googleapis.com/milena-a/plan-left.png)', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-        <TextWrapper>
-          <div style={{ padding: '30px 40px', backgroundColor: '#37363685'}}>
-            <Title ref={houseTitleRef} className={isHouseTitleVisible ? 'animate__animated animate__fadeInDown' : ''}>
-              Popis technologií instalovaných v objektu
-            </Title>
-          <div ref={houseContentRef} className={isHouseContentVisible ? 'animate__animated animate__fadeIn' : ''}>
-            <IntroText>
-              V domě je instalován moderní energetický systém využívající obnovitelné zdroje a úsporné technologie
-            </IntroText>
-            <TechnologyGrid>
-              <TechnologyCard>
-                <TechnologyTitle>
-                  <TechnologyIcon>⚡</TechnologyIcon>
-                  Fotovoltaický systém Growatt SPH-BH UP
-                </TechnologyTitle>
-                <TechnologyDescription>
-                  Třífázový hybridní střídač s možností ukládání přebytků do bateriového úložiště, záložním napájením (EPS/UPS) a chytrým řízením spotřeby. Systém umožňuje efektivní využití solární energie a zvyšuje energetickou soběstačnost budovy.
-                </TechnologyDescription>
-              </TechnologyCard>
-
-              <TechnologyCard>
-                <TechnologyTitle>
-                  <TechnologyIcon>☀️</TechnologyIcon>
-                  Fotovoltaické panely Canadian Solar
-                </TechnologyTitle>
-                <TechnologyDescription>
-                  Vysoce účinné FV moduly renomovaného výrobce s dlouhou životností a zárukou výkonu, určené pro výrobu elektrické energie z obnovitelného zdroje.
-                </TechnologyDescription>
-              </TechnologyCard>
-
-              <TechnologyCard>
-                <TechnologyTitle>
-                  <TechnologyIcon>🔥</TechnologyIcon>
-                  Tepelné čerpadlo ASH-35CHWIFR
-                </TechnologyTitle>
-                <TechnologyDescription>
-                  3 fázové, výkon 10,0 kW. Slouží k energeticky úspornému vytápění domu a ohřevu teplé vody. Jednotka je napojena na akumulační zásobníky a zajišťuje komfortní provoz i při nízkých venkovních teplotách.
-                </TechnologyDescription>
-              </TechnologyCard>
-
-              <TechnologyCard>
-                <TechnologyTitle>
-                  <TechnologyIcon>📱</TechnologyIcon>
-                  Vzdálený přístup a monitoring
-                </TechnologyTitle>
-                <TechnologyDescription>
-                  Umožňuje online monitoring a správu systému, sledování výroby a spotřeby energie v reálném čase prostřednictvím komunikačního rozhraní pro FVE.
-                </TechnologyDescription>
-              </TechnologyCard>
-
-              <TechnologyCard>
-                <TechnologyTitle>
-                  <TechnologyIcon>🏺</TechnologyIcon>
-                  Akumulační zásobníky
-                </TechnologyTitle>
-                <TechnologyDescription>
-                  <strong>500 l</strong> – slouží k vyrovnání tepelné bilance a zvýšení účinnosti systému.<br/><br/>
-                  <strong>1000 l s výměníky</strong> – umožňuje integraci více zdrojů tepla a efektivní akumulaci energie pro vytápění i přípravu teplé vody.
-                </TechnologyDescription>
-              </TechnologyCard>
-
-              <TechnologyCard>
-                <TechnologyTitle>
-                  <TechnologyIcon>🔥</TechnologyIcon>
-                  Kotel na pelety (záložní zdroj)
-                </TechnologyTitle>
-                <TechnologyDescription>
-                  Instalován jako nouzový zdroj tepla, který se běžně nevyužívá. Je určen výhradně pro zajištění vytápění a ohřevu vody v případě poruchy tepelného čerpadla nebo jiné části hlavního systému.
-                </TechnologyDescription>
-              </TechnologyCard>
-
-              <TechnologyCard>
-                <TechnologyTitle>
-                  <TechnologyIcon>🚗</TechnologyIcon>
-                  Dobíjecí stanice pro elektromobily
-                </TechnologyTitle>
-                <TechnologyDescription>
-                  V objektu jsou instalovány dvě nabíjecí stanice, které umožňují pohodlné a ekologické dobíjení elektromobilů přímo z vlastní vyrobené elektrické energie z fotovoltaického systému.
-                </TechnologyDescription>
-              </TechnologyCard>
-            </TechnologyGrid>
-          </div>
-        </div>
-        </TextWrapper>
-      </SectionHouse>
-      
-            <CitySection>
-        <CityContainer>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <CityTitle>Hranice</CityTitle>
-          <CitySubtitle>
-            Město s bohatou historií a termálními prameny
-          </CitySubtitle>
-          </div>
-
             <FloorCard>
               <FloorHeader>
                 <FloorIcon>1</FloorIcon>
@@ -611,6 +469,15 @@ function App() {
           </FloorGrid>
         </FloorsContainer>
       </FloorsSection>
+      
+      <CitySection>
+        <CityContainer>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <CityTitle>Hranice</CityTitle>
+          <CitySubtitle>
+            Město s bohatou historií a termálními prameny
+          </CitySubtitle>
+          </div>
           <CityDescription>
             <p><strong>Vila Milena</strong> se nachází v srdci tohoto historického města, které je proslulé svými léčivými termálními prameny a jedinečnou atmosférou.</p>
             
