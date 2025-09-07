@@ -9,7 +9,8 @@ const Wrapper = styled('div')({
   width: "100%",
   height: "100vh",
   overflow: "hidden",
-  backgroundColor: "#0000004a"
+  backgroundColor: "#0000004a",
+  color: '#fff8e3'
 });
 
 export const DroneViewCard = () => {
@@ -40,7 +41,7 @@ export const DroneViewCard = () => {
     <Wrapper>
       <video
         ref={videoRef}
-        src="https://storage.googleapis.com/milena-a/drop.mov"
+        src="https://storage.googleapis.com/milena-a/dron.mp4"
         loop
         muted
         autoPlay
