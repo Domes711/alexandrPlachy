@@ -403,6 +403,203 @@ const MilenkaIcon = styled('div')({
   textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
 })
 
+const FloorPlansSection = styled('div')({
+  background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%)',
+  color: '#2d3436',
+  padding: '100px 24px',
+  position: 'relative',
+  overflow: 'hidden',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '1px',
+    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.3), transparent)',
+  },
+})
+
+const FloorPlansContainer = styled('div')({
+  maxWidth: 1400,
+  margin: '0 auto',
+})
+
+const FloorPlansTitle = styled('h1')({
+  fontSize: 48,
+  fontWeight: 700,
+  marginBottom: 24,
+  color: '#2d3436',
+  textAlign: 'center',
+  letterSpacing: '1px',
+
+  '@media (max-width: 768px)': {
+    fontSize: 36
+  }
+})
+
+const FloorPlansSubtitle = styled('p')({
+  fontSize: 20,
+  fontWeight: 300,
+  marginBottom: 64,
+  color: '#636e72',
+  textAlign: 'center',
+  maxWidth: 800,
+  margin: '0 auto 64px auto',
+  lineHeight: 1.5,
+
+  '@media (max-width: 768px)': {
+    fontSize: 18
+  }
+})
+
+const ArchitecturalShowcase = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 80,
+})
+
+const ShowcaseItem = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: 48,
+  alignItems: 'center',
+
+  '&:nth-of-type(even)': {
+    '& > div:first-of-type': {
+      order: 2
+    }
+  },
+
+  '@media (max-width: 1000px)': {
+    gridTemplateColumns: '1fr',
+    gap: 32,
+    
+    '&:nth-of-type(even)': {
+      '& > div:first-of-type': {
+        order: 0
+      }
+    }
+  }
+})
+
+const ShowcaseImage = styled('div')({
+  position: 'relative',
+  borderRadius: 16,
+  overflow: 'hidden',
+  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1)',
+  background: 'white',
+  padding: 24,
+  
+  '& img': {
+    width: '100%',
+    height: 'auto',
+    borderRadius: 8,
+  }
+})
+
+const ShowcaseContent = styled('div')({
+  padding: '0 24px',
+})
+
+const ShowcaseTitle = styled('h2')({
+  fontSize: 32,
+  fontWeight: 600,
+  marginBottom: 16,
+  color: '#2d3436',
+  lineHeight: 1.2,
+
+  '@media (max-width: 768px)': {
+    fontSize: 28
+  }
+})
+
+const ShowcaseDescription = styled('p')({
+  fontSize: 18,
+  lineHeight: 1.6,
+  color: '#636e72',
+  marginBottom: 24,
+
+  '@media (max-width: 768px)': {
+    fontSize: 16
+  }
+})
+
+const ShowcaseFeatures = styled('ul')({
+  listStyle: 'none',
+  padding: 0,
+  margin: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 12,
+})
+
+const ShowcaseFeature = styled('li')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 12,
+  fontSize: 16,
+  color: '#2d3436',
+  
+  '&::before': {
+    content: '""',
+    width: 8,
+    height: 8,
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #b88c99, #d4a5b3)',
+    flexShrink: 0,
+  }
+})
+
+const FloorPlanGrid = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: 32,
+  marginTop: 80,
+  padding: 40,
+  background: 'white',
+  borderRadius: 20,
+  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.08)',
+
+  '@media (max-width: 1000px)': {
+    gridTemplateColumns: '1fr',
+    gap: 24,
+    padding: 24,
+  }
+})
+
+const FloorPlanItem = styled('div')({
+  textAlign: 'center',
+})
+
+const FloorPlanImage = styled('div')({
+  width: '100%',
+  height: 300,
+  background: 'linear-gradient(135deg, #f1f3f4, #e8eaed)',
+  borderRadius: 12,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: 16,
+  border: '2px dashed #b88c99',
+  position: 'relative',
+  overflow: 'hidden',
+
+  '&::before': {
+    content: '"📐"',
+    fontSize: 48,
+    opacity: 0.3,
+  }
+})
+
+const FloorPlanLabel = styled('h3')({
+  fontSize: 18,
+  fontWeight: 600,
+  color: '#2d3436',
+  margin: 0,
+})
+
 const LandSection = styled('div')({
   background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)',
   color: 'white',
@@ -737,6 +934,82 @@ function App() {
         </div>
         </TextWrapper>
       </SectionHouse>
+      
+      <FloorPlansSection>
+        <FloorPlansContainer>
+          <FloorPlansTitle>Architektonické řešení</FloorPlansTitle>
+          <FloorPlansSubtitle>
+            Moderní přístup k prostorové koncepci s důrazem na funkčnost a estetiku
+          </FloorPlansSubtitle>
+          
+          <ArchitecturalShowcase>
+            <ShowcaseItem>
+              <ShowcaseImage>
+                <img 
+                  src="https://images.pexels.com/photos/7031406/pexels-photo-7031406.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Moderní architektonický návrh"
+                />
+              </ShowcaseImage>
+              <ShowcaseContent>
+                <ShowcaseTitle>Koncepční návrh</ShowcaseTitle>
+                <ShowcaseDescription>
+                  Architektonické řešení vychází z moderních trendů s důrazem na maximální využití prostoru 
+                  a propojení interiéru s exteriérem. Každé patro je navrženo s ohledem na specifické potřeby 
+                  a komfort budoucích obyvatel.
+                </ShowcaseDescription>
+                <ShowcaseFeatures>
+                  <ShowcaseFeature>Otevřené prostory s vysokými stropy</ShowcaseFeature>
+                  <ShowcaseFeature>Velkorysé prosklené plochy</ShowcaseFeature>
+                  <ShowcaseFeature>Optimální orientace ke světovým stranám</ShowcaseFeature>
+                  <ShowcaseFeature>Propojení s venkovními terasami</ShowcaseFeature>
+                </ShowcaseFeatures>
+              </ShowcaseContent>
+            </ShowcaseItem>
+
+            <ShowcaseItem>
+              <ShowcaseImage>
+                <img 
+                  src="https://images.pexels.com/photos/6782351/pexels-photo-6782351.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Interiérové řešení"
+                />
+              </ShowcaseImage>
+              <ShowcaseContent>
+                <ShowcaseTitle>Interiérové řešení</ShowcaseTitle>
+                <ShowcaseDescription>
+                  Vnitřní prostory jsou navrženy s důrazem na funkčnost a estetiku. Každá místnost 
+                  má své specifické určení a je optimálně využita. Materiály a barvy jsou zvoleny 
+                  tak, aby vytvářely harmonický celek.
+                </ShowcaseDescription>
+                <ShowcaseFeatures>
+                  <ShowcaseFeature>Kvalitní materiály a povrchy</ShowcaseFeature>
+                  <ShowcaseFeature>Promyšlené úložné prostory</ShowcaseFeature>
+                  <ShowcaseFeature>Moderní technické vybavení</ShowcaseFeature>
+                  <ShowcaseFeature>Flexibilní uspořádání místností</ShowcaseFeature>
+                </ShowcaseFeatures>
+              </ShowcaseContent>
+            </ShowcaseItem>
+          </ArchitecturalShowcase>
+
+          <FloorPlanGrid>
+            <FloorPlanItem>
+              <FloorPlanImage />
+              <FloorPlanLabel>Půdorys 3. NP</FloorPlanLabel>
+            </FloorPlanItem>
+            <FloorPlanItem>
+              <FloorPlanImage />
+              <FloorPlanLabel>Půdorys 2. NP</FloorPlanLabel>
+            </FloorPlanItem>
+            <FloorPlanItem>
+              <FloorPlanImage />
+              <FloorPlanLabel>Půdorys 1. NP</FloorPlanLabel>
+            </FloorPlanItem>
+            <FloorPlanItem>
+              <FloorPlanImage />
+              <FloorPlanLabel>Půdorys suterénu</FloorPlanLabel>
+            </FloorPlanItem>
+          </FloorPlanGrid>
+        </FloorPlansContainer>
+      </FloorPlansSection>
       
       <LandSection>
         <LandContainer>
