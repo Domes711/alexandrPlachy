@@ -9,40 +9,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 // @ts-ignore
 import 'swiper/css/navigation';
-import { Card } from './components/Card';
 
-const LandImage = styled('img')({
-  height: 350,
-  borderRadius: 24,
-  objectFit: 'cover',
-  borderTopLeftRadius: 0,
-  borderBottomLeftRadius: 0,
-  marginLeft: -24,
 
-  '@media (max-width: 1000px)': {
-    marginLeft: 100,
-    marginRight: -24,
-    borderRadius: 24,
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-  }
-})
-
-const HouseImage = styled('img')({
-  height: 350,
-  borderRadius: 24,
-  borderTopRightRadius: 0,
-  borderBottomRightRadius: 0,
-  objectFit: 'cover',
-
-  '@media (max-width: 1000px)': {
-    marginRight: 100,
-    marginLeft: -88,
-    borderRadius: 24,
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-  }
-})
 
 const Section = styled('div')({
   display: 'flex',
@@ -76,10 +44,6 @@ const TextWrapper = styled('div')({
 //     marginTop: 24
 //   }
 // })
-
-const Icon = styled('img')({
-  height: 35
-})
 
 const SectionHouse = styled(Section)({
   justifyContent: 'space-between',
