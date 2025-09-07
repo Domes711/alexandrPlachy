@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 const Wrapper = styled('div')({
   position: "relative",
@@ -13,29 +13,9 @@ const Wrapper = styled('div')({
   color: '#fff8e3'
 });
 
+
 export const DroneViewCard = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleCanPlayThrough = () => {
-      video.play();
-    };
-
-    const handleWaiting = () => {
-      video.pause();
-    };
-
-    video.addEventListener('canplaythrough', handleCanPlayThrough);
-    video.addEventListener('waiting', handleWaiting);
-
-    return () => {
-      video.removeEventListener('canplaythrough', handleCanPlayThrough);
-      video.removeEventListener('waiting', handleWaiting);
-    };
-  }, []);
 
   return (
     <Wrapper>
@@ -47,6 +27,7 @@ export const DroneViewCard = () => {
         autoPlay
         poster='https://storage.googleapis.com/milena-a/WhatsApp%20Image%202025-07-31%20at%2022.38.44.jpeg'
         playsInline
+        preload="auto"
         style={{
           position: "absolute",
           top: 0,
