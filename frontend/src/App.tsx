@@ -274,6 +274,119 @@ const CityDescription = styled('div')({
     fontSize: 16
   }
 })
+
+const MilenkaSection = styled('div')({
+  background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)',
+  color: 'white',
+  padding: '80px 24px',
+  position: 'relative',
+  overflow: 'hidden',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '1px',
+    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.5), transparent)',
+  },
+})
+
+const MilenkaContainer = styled('div')({
+  maxWidth: 1200,
+  margin: '0 auto',
+  textAlign: 'center'
+})
+
+const MilenkaTitle = styled('h1')({
+  fontFamily: '"Delius Swash Caps", cursive',
+  fontSize: 72,
+  fontWeight: 400,
+  marginBottom: 48,
+  color: '#b88c99',
+  textShadow: '0 4px 16px rgba(0,0,0,0.8)',
+  letterSpacing: '2px',
+
+  '@media (max-width: 768px)': {
+    fontSize: 48
+  }
+})
+
+const MilenkaGrid = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+  gap: 32,
+  marginTop: 48,
+
+  '@media (max-width: 1000px)': {
+    gridTemplateColumns: '1fr'
+  }
+})
+
+const MilenkaCard = styled('div')({
+  backdropFilter: 'blur(5px)',
+  background: 'linear-gradient(145deg, #1e1e1eed, #2a2a2aed)',
+  borderRadius: 16,
+  padding: 32,
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+  transition: 'all 0.3s ease',
+  border: '1px solid rgba(184, 140, 153, 0.2)',
+  position: 'relative',
+  overflow: 'hidden',
+  textAlign: 'left',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '2px',
+    background: 'linear-gradient(90deg, transparent, rgba(184, 140, 153, 0.6), transparent)',
+  },
+
+  '&:hover': {
+    transform: 'translateY(-8px) scale(1.02)',
+    boxShadow: '0 16px 48px rgba(0, 0, 0, 0.4), 0 0 20px rgba(184, 140, 153, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+    borderColor: 'rgba(184, 140, 153, 0.4)',
+  }
+})
+
+const MilenkaCardTitle = styled('h3')({
+  fontSize: 22,
+  fontWeight: 600,
+  color: '#f8f9fa',
+  marginBottom: 16,
+  display: 'flex',
+  alignItems: 'center',
+  gap: 12,
+  textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
+})
+
+const MilenkaCardDescription = styled('p')({
+  fontSize: 16,
+  lineHeight: 1.6,
+  color: '#d1d5db',
+  margin: 0,
+  textShadow: '0 1px 1px rgba(0, 0, 0, 0.3)'
+})
+
+const MilenkaIcon = styled('div')({
+  width: 40,
+  height: 40,
+  borderRadius: '8px',
+  background: 'linear-gradient(135deg, #b88c99, #d4a5b3)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: 18,
+  color: 'white',
+  fontWeight: 'bold',
+  boxShadow: '0 4px 12px rgba(184, 140, 153, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+  textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'
+})
+
 //   backgroundColor: '#000000d9',
 //   marginTop: 64,
 //   minHeight: 200,
@@ -325,7 +438,7 @@ function App() {
           <div ref={landContentRef} className={isLandContentVisible ? 'animate__animated animate__fadeIn' : ''}>
             <p>
               Pozemek o <b>celkové výměře 2 634 m²</b>, tvořený třemi parcelami, nabízí široké možnosti využití.
-              V současnosti slouží především k parkování a k provozu níže uvedeného občerstvení s venkovním posezením pod <b>názvem „Milenka“</b>, registrovaným jako ochranná známka.
+              V současnosti slouží především k parkování a k provozu níže uvedeného občerstvení s venkovním posezením pod <b>názvem „Milenka"</b>, registrovaným jako ochranná známka.
             </p>
           </div>
         </TextWrapper>
@@ -395,7 +508,7 @@ function App() {
         </div>
       </div>
       
-      <SectionHouse style={{ backgroundImage: 'url(https://storage.googleapis.com/milena-a/house-top.jpeg)'}}>
+      <SectionHouse style={{ backgroundImage: 'url(https://storage.googleapis.com/milena-a/plan-left.png)', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
         <TextWrapper>
           <div style={{ padding: '30px 40px'}}>
             <Title ref={houseTitleRef} className={isHouseTitleVisible ? 'animate__animated animate__fadeInDown' : ''}>
@@ -500,6 +613,45 @@ function App() {
           </CityDescription>
         </CityContainer>
       </CitySection>
+      
+      <MilenkaSection>
+        <MilenkaContainer>
+          <MilenkaTitle>Milenka</MilenkaTitle>
+          
+          <MilenkaGrid>
+            <MilenkaCard>
+              <MilenkaCardTitle>
+                <MilenkaIcon>🍽️</MilenkaIcon>
+                Moderní občerstvení
+              </MilenkaCardTitle>
+              <MilenkaCardDescription>
+                Milenka, inspirovaná protější historickou vilou Milena v Teplicích nad Bečvou, je moderní občerstvení s venkovním posezením. Nabízí nadstandardní rychlé občerstvení, kvalitní kávu, čepované plzeňské pivo, zmrzlinu i speciality z BBQ grilu.
+              </MilenkaCardDescription>
+            </MilenkaCard>
+
+            <MilenkaCard>
+              <MilenkaCardTitle>
+                <MilenkaIcon>🎵</MilenkaIcon>
+                Kulturní program
+              </MilenkaCardTitle>
+              <MilenkaCardDescription>
+                Díky své atmosféře a atraktivní poloze přímo u lázeňské promenády se stala oblíbeným místem pro místní i návštěvníky lázní. Součástí provozu je také pravidelný kulturní program s hudebními vystoupeními – od lokálních kapel až po známé interprety.
+              </MilenkaCardDescription>
+            </MilenkaCard>
+
+            <MilenkaCard>
+              <MilenkaCardTitle>
+                <MilenkaIcon>®</MilenkaIcon>
+                Registrovaná ochranná známka
+              </MilenkaCardTitle>
+              <MilenkaCardDescription>
+                Značka Milenka je registrovanou ochrannou známkou, která je již využívána také pro další provozovnu v Rožnově pod Radhoštěm. Tato ochrana zajišťuje jedinečnost a kvalitu služeb pod touto značkou.
+              </MilenkaCardDescription>
+            </MilenkaCard>
+          </MilenkaGrid>
+        </MilenkaContainer>
+      </MilenkaSection>
+      
             <Swiper
         modules={[Navigation]}
         navigation
