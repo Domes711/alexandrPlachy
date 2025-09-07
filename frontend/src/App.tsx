@@ -788,7 +788,7 @@ function App() {
           </LandGrid>
         </LandContainer>
       </LandSection>
-            
+      
       <LandSection>
         <LandContainer>
           <LandTitle>Pozemek</LandTitle>
