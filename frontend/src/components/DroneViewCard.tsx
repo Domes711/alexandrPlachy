@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 const Wrapper = styled('div')({
   position: "relative",
@@ -13,59 +13,9 @@ const Wrapper = styled('div')({
   color: '#fff8e3'
 });
 
-const PlayButton = styled('button')({
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  zIndex: 2,
-  backgroundColor: 'rgba(0, 0, 0, 0.7)',
-  color: 'white',
-  border: 'none',
-  borderRadius: '50%',
-  width: '80px',
-  height: '80px',
-  fontSize: '24px',
-  cursor: 'pointer',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  '&:hover': {
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
-  }
-});
+
 export const DroneViewCard = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [showPlayButton, setShowPlayButton] = useState(true);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handlePlay = () => {
-      setIsPlaying(true);
-      setShowPlayButton(false);
-    };
-
-    const handlePause = () => {
-      setIsPlaying(false);
-      setShowPlayButton(true);
-    };
-
-    const handleEnded = () => {
-      setIsPlaying(false);
-      setShowPlayButton(true);
-    };
-
-    video.addEventListener('play', handlePlay);
-
-    return () => {
-      video.removeEventListener('play', handlePlay);
-      video.removeEventListener('pause', handlePause);
-      video.removeEventListener('ended', handleEnded);
-    };
-  }, []);
 
   return (
     <Wrapper>
