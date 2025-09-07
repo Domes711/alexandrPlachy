@@ -906,4 +906,9 @@ function App() {
           </MilenkaGrid>
         </MilenkaContainer>
       </MilenkaSection>
+    </>
+  );
+}
+
+export default App;
       
