@@ -429,51 +429,51 @@ function App() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </div>
       </PriceSection> */}
-      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignContent: 'center', marginTop: 0, alignItems: 'start', gap: 40, backgroundImage: 'url(https://storage.googleapis.com/milena-a/house-front.jpeg)', backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundPositionX: 'center' }}>
-      <div style={{ backgroundColor: '#00000066', width: '100%', padding: 30, display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'start' }}>
-        <div style={{ display: 'flex', justifyContent: 'start', width: '100%' }}>
-          <FloorCard>
-            <FloorTitle>
-              <FloorIcon>3</FloorIcon>
-              3. N.P.
-            </FloorTitle>
-            <FloorDescription>
-              Třetí nadzemní podlaží tvoří čtyři pokoje, úklidová místnost a chodba. Součástí je také možnost využití krovu, který nabízí další potenciál pro rozšíření či úpravy dle potřeb budoucího vlastníka.
-            </FloorDescription>
-          </FloorCard>
-        </div>
-        <FloorCard>
-          <FloorTitle>
-            <FloorIcon>2</FloorIcon>
-            2. N.P.
-          </FloorTitle>
-          <FloorDescription>
-            Druhé nadzemní podlaží nabízí šest pokojů, přičemž tři z nich disponují vlastním sociálním zázemím. Součástí patra je také chodba, sklad a společné sociální zařízení doplněné o kuchyňku.
-          </FloorDescription>
-        </FloorCard>
-        <FloorCard>
-          <FloorTitle>
-            <FloorIcon>1</FloorIcon>
-            1. N.P.
-          </FloorTitle>
-          <FloorDescription>
-            První nadzemní podlaží tvoří z velké části nově zrekonstruovaný byt o podlahové ploše 108 m² se zimní zahradou. Zbytek podlaží zahrnuje chodbu, čtyři pokoje (z nichž jeden je již zrekonstruovaný) a sklad s koupelnou. Celé podlaží má rozvody elektřiny v mědi.
-          </FloorDescription>
-        </FloorCard>
-        <FloorCard>
-          <FloorTitle>
-            <FloorIcon>B</FloorIcon>
-            Suterén
-          </FloorTitle>
-          <FloorDescription>
-            Suterén domu prošel rekonstrukcí a nese industriální charakter doplněný designovými prvky. Dominantou hlavní místnosti je velký epoxidový stůl, který prostoru dodává jedinečný výraz. Zbylé části suterénu jsou v současnosti využívány převážně technicky, k dispozici je také toaleta.
-          </FloorDescription>
-        </FloorCard>
-        </div>
-      </div>
+      <FloorsSection>
+        <FloorsContainer>
+          <FloorsTitle>Dispozice objektu</FloorsTitle>
+          <FloorsSubtitle>
+            Čtyřpodlažní objekt nabízí rozmanité možnosti využití s celkovou užitnou plochou přes 400 m²
+          </FloorsSubtitle>
+          
+          <FloorGrid>
+            <FloorCard>
+              <FloorHeader>
+                <FloorIcon>3</FloorIcon>
+                <FloorTitle>3. nadzemní podlaží</FloorTitle>
+              </FloorHeader>
+              <FloorContent>
+                <FloorDescription>
+                  Třetí nadzemní podlaží tvoří čtyři pokoje, úklidová místnost a chodba. Součástí je také možnost využití krovu, který nabízí další potenciál pro rozšíření či úpravy dle potřeb budoucího vlastníka.
+                </FloorDescription>
+                <FloorPlan>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: 16, marginBottom: 8 }}>📐</div>
+                    <div>Půdorys 3. NP</div>
+                    <div style={{ fontSize: 12, opacity: 0.7 }}>4 pokoje + krov</div>
+                  </div>
+                </FloorPlan>
+              </FloorContent>
+            </FloorCard>
+
+            <FloorCard>
+              <FloorHeader>
+                <FloorIcon>2</FloorIcon>
+                <FloorTitle>2. nadzemní podlaží</FloorTitle>
+              </FloorHeader>
+              <FloorContent>
+                <FloorDescription>
+                  Druhé nadzemní podlaží nabízí šest pokojů, přičemž tři z nich disponují vlastním sociálním zázemím. Součástí patra je také chodba, sklad a společné sociální zařízení doplněné o kuchyňku.
+                </FloorDescription>
+                <FloorPlan>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: 16, marginBottom: 8 }}>📐</div>
+                    <div>Půdorys 2. NP</div>
+                    <div style={{ fontSize: 12, opacity: 0.7 }}>6 pokojů + kuchyňka</div>
+                  </div>
+                </FloorPlan>
+              </FloorContent>
+            </FloorCard>
       
       <SectionHouse style={{ backgroundImage: 'url(https://storage.googleapis.com/milena-a/plan-left.png)', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
         <TextWrapper>
@@ -571,7 +571,46 @@ function App() {
           </CitySubtitle>
           </div>
 
+            <FloorCard>
+              <FloorHeader>
+                <FloorIcon>1</FloorIcon>
+                <FloorTitle>1. nadzemní podlaží</FloorTitle>
+              </FloorHeader>
+              <FloorContent>
+                <FloorDescription>
+                  První nadzemní podlaží tvoří z velké části nově zrekonstruovaný byt o podlahové ploše 108 m² se zimní zahradou. Zbytek podlaží zahrnuje chodbu, čtyři pokoje (z nichž jeden je již zrekonstruovaný) a sklad s koupelnou. Celé podlaží má rozvody elektřiny v mědi.
+                </FloorDescription>
+                <FloorPlan>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: 16, marginBottom: 8 }}>📐</div>
+                    <div>Půdorys 1. NP</div>
+                    <div style={{ fontSize: 12, opacity: 0.7 }}>Byt 108 m² + pokoje</div>
+                  </div>
+                </FloorPlan>
+              </FloorContent>
+            </FloorCard>
 
+            <FloorCard>
+              <FloorHeader>
+                <FloorIcon>B</FloorIcon>
+                <FloorTitle>Suterén</FloorTitle>
+              </FloorHeader>
+              <FloorContent>
+                <FloorDescription>
+                  Suterén domu prošel rekonstrukcí a nese industriální charakter doplněný designovými prvky. Dominantou hlavní místnosti je velký epoxidový stůl, který prostoru dodává jedinečný výraz. Zbylé části suterénu jsou v současnosti využívány převážně technicky, k dispozici je také toaleta.
+                </FloorDescription>
+                <FloorPlan>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: 16, marginBottom: 8 }}>📐</div>
+                    <div>Půdorys suterénu</div>
+                    <div style={{ fontSize: 12, opacity: 0.7 }}>Industriální design</div>
+                  </div>
+                </FloorPlan>
+              </FloorContent>
+            </FloorCard>
+          </FloorGrid>
+        </FloorsContainer>
+      </FloorsSection>
           <CityDescription>
             <p><strong>Vila Milena</strong> se nachází v srdci tohoto historického města, které je proslulé svými léčivými termálními prameny a jedinečnou atmosférou.</p>
             
