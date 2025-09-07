@@ -510,7 +510,7 @@ function App() {
       
       <SectionHouse style={{ backgroundImage: 'url(https://storage.googleapis.com/milena-a/plan-left.png)', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
         <TextWrapper>
-          <div style={{ padding: '30px 40px'}}>
+          <div style={{ padding: '30px 40px', backgroundColor: '#000000dd'}}>
             <Title ref={houseTitleRef} className={isHouseTitleVisible ? 'animate__animated animate__fadeInDown' : ''}>
               Popis technologií instalovaných v objektu
             </Title>
