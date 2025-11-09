@@ -1,69 +1,92 @@
-# React + TypeScript + Vite
+# Prestige Reality - Prezentační webová stránka makléře
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Moderní, responzivní webová aplikace pro realitní makléře vytvořená v React s TypeScript a Tailwind CSS.
 
-Currently, two official plugins are available:
+## Funkce
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Moderní design** inspirovaný prémiovými realitními portály
+- **Plně responzivní** - optimalizováno pro desktop, tablet i mobil
+- **Rychlá navigace** s fixním headrem a mobilním menu
+- **Hero sekce** s působivým pozadím a statistikami
+- **Seznam nemovitostí** s detailními kartami a filtry
+- **Profesionální footer** s kontaktními informacemi a odkazy
 
-## Expanding the ESLint configuration
+## Technologie
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Modern ES6+
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalace
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+```bash
+# Instalace závislostí
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Spuštění vývojového serveru
+npm run dev
+
+# Build pro produkci
+npm run build
+
+# Náhled produkční verze
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Struktura projektu
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+realtor-website/
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx        # Hlavička s navigací
+│   │   ├── Hero.tsx          # Hero sekce s CTA
+│   │   ├── PropertyCard.tsx  # Karta jednotlivé nemovitosti
+│   │   ├── PropertyList.tsx  # Seznam nemovitostí
+│   │   └── Footer.tsx        # Footer s kontakty
+│   ├── App.tsx               # Hlavní komponenta
+│   └── index.css             # Globální styly a Tailwind
+├── tailwind.config.js        # Konfigurace Tailwind CSS
+└── package.json
+```
+
+## Přizpůsobení
+
+### Barvy
+Upravte barvy v `tailwind.config.js`:
+```js
+colors: {
+  primary: '#1a1a1a',    // Primární barva
+  secondary: '#d4af37',  // Sekundární/zlatá barva
+  accent: '#2c3e50',     // Doplňková barva
+}
+```
+
+### Nemovitosti
+Upravte seznam nemovitostí v `src/components/PropertyList.tsx` v poli `properties`.
+
+### Fonty
+Změňte fonty v `tailwind.config.js` a v `src/index.css`.
+
+## Deployment
+
+Aplikace je připravena pro deployment na:
+- Vercel
+- Netlify
+- GitHub Pages
+- Jakýkoliv hosting podporující statické stránky
+
+```bash
+npm run build
+# Složka dist/ obsahuje připravenou aplikaci
+```
+
+## Spuštění
+
+Aplikace běží na: **http://localhost:5173/**
+
+## Licence
+
+Vytvořeno pro demonstrační účely.
