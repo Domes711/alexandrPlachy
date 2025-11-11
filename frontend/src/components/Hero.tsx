@@ -1,6 +1,13 @@
-const Hero = () => {
+interface HeroProps {
+  onOpenModal: () => void;
+}
+
+const Hero = ({ onOpenModal }: HeroProps) => {
   return (
-    <section className="relative h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center mt-16">
+    <section
+      id="home"
+      className="relative h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center mt-16"
+    >
       {/* Background video */}
       <video
         autoPlay
@@ -20,19 +27,23 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-          Váš sen o domově
-          <br />
-          <span className="text-secondary">začíná zde</span>
+        <h1 className="text-4xl md:text-6xl m-2 lg:text-7xl font-bold mb-6 leading-tight whitespace-nowrap">
+          <span className="text-secondary">Bezpečně</span> • Bezstarostě
+          <span className="text-secondary"> • Bezplatně</span>
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto text-gray-200">
-          Exkluzivní realitní služby pro náročné klienty. Objevte luxusní
-          nemovitosti v těch nejlepších lokalitách.
+          Neprezentujeme sebe, prezentujeme vaši nemovitost. <br />
+          Férově, bez zbytečně velkých provizí.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="btn-primary text-lg">Prohlédnout nabídku</button>
-          <button className="btn-secondary text-lg bg-white bg-opacity-20 backdrop-blur-sm border-white hover:bg-white text-primary">
-            Domluvit schůzku
+        <div className="flex flex-col sm:flex-row gap-8 justify-center">
+          <button onClick={onOpenModal} className="btn-primary text-lg">
+            Chci prodat
+          </button>
+          <button
+            onClick={onOpenModal}
+            className="btn-secondary text-lg bg-white bg-opacity-20 backdrop-blur-sm border-white hover:bg-white text-primary"
+          >
+            Chci pronajmout
           </button>
         </div>
 
@@ -40,7 +51,15 @@ const Hero = () => {
         <div className="grid grid-cols-3 gap-8 mt-16 max-w-3xl mx-auto">
           <div>
             <div className="text-3xl md:text-4xl font-bold text-secondary">
-              500+
+              400+
+            </div>
+            <div className="text-sm md:text-base text-gray-300 mt-2">
+              Pronajatých nemovitostí
+            </div>
+          </div>
+          <div>
+            <div className="text-3xl md:text-4xl font-bold text-secondary">
+              100+
             </div>
             <div className="text-sm md:text-base text-gray-300 mt-2">
               Prodaných nemovitostí
@@ -48,18 +67,10 @@ const Hero = () => {
           </div>
           <div>
             <div className="text-3xl md:text-4xl font-bold text-secondary">
-              15+
-            </div>
-            <div className="text-sm md:text-base text-gray-300 mt-2">
-              Let zkušeností
-            </div>
-          </div>
-          <div>
-            <div className="text-3xl md:text-4xl font-bold text-secondary">
               98%
             </div>
             <div className="text-sm md:text-base text-gray-300 mt-2">
-              Spokojených klientů
+              Zprostředkovaných prodejů
             </div>
           </div>
         </div>

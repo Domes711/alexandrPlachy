@@ -1,29 +1,56 @@
-const Services = () => {
+interface ServicesProps {
+  onOpenModal: () => void;
+}
+
+const Services = ({ onOpenModal }: ServicesProps) => {
   const services = [
     {
-      title: 'Prodej',
-      description: 'Kompletní služby při prodeji vaší nemovitosti. Zajistíme profesionální ocenění, marketing a celý proces prodeje až po předání klíčů.',
-      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      title: "Prodej",
+      description:
+        "Kompletní služby při prodeji vaší nemovitosti. Zajistíme profesionální ocenění, marketing a celý proces prodeje až po předání klíčů.",
+      image:
+        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      buttonText: "Sjednat prodej",
     },
     {
-      title: 'Pronájem',
-      description: 'Pomůžeme vám najít spolehlivé nájemníky. Zajistíme kompletní administraci, právní ošetření smluv a pravidelnou kontrolu nemovitosti.',
-      image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      title: "Pronájem",
+      description:
+        "Pomůžeme vám najít spolehlivé nájemníky. Zajistíme kompletní administrativu, právní ošetření smluv a pravidelnou kontrolu nemovitosti.",
+      image:
+        "https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      buttonText: "Sjednat pronájem",
     },
     {
-      title: 'Výkup',
-      description: 'Rychlý a bezproblémový výkup nemovitostí. Nabízíme férovou cenu a vyřízení veškerých formalit do 30 dnů.',
-      image: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      title: "Výkup",
+      description:
+        "Zastupujeme skupinu investorů. Rychlý a bezproblémový výkup nemovitostí. Nabízíme férovou cenu a vyřízení veškerých formalit do 30 dnů.",
+      image:
+        "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      buttonText: "Sjednat výkup",
     },
     {
-      title: 'Právní služby',
-      description: 'Komplexní právní poradenství v oblasti nemovitostí. Zajišťujeme kontrolu smluv, řešení sporů a zastoupení při jednáních.',
-      image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      title: "Právní služby",
+      description:
+        "Komplexní právní poradenství v oblasti nemovitostí. Zajišťujeme kontrolu smluv, řešení sporů a zastoupení při jednáních.",
+      image:
+        "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      buttonText: "Sjednat právní služby",
     },
     {
-      title: 'Advokátní úschova',
-      description: 'Bezpečné uchování finančních prostředků při transakci. Garantujeme ochranu zájmů obou stran a bezpečný převod vlastnictví.',
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      title: "Advokátní úschova",
+      description:
+        "Bezpečné uchování finančních prostředků při transakci. Garantujeme ochranu zájmů obou stran a bezpečný převod vlastnictví.",
+      image:
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      buttonText: "Sjednat advokátní úschovu",
+    },
+    {
+      title: "Financování",
+      description:
+        "Pomůžeme vám zajistit optimální hypotéku nebo úvěr na nemovitost. Poradíme s výběrem banky a zajistíme nejlepší podmínky financování.",
+      image:
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      buttonText: "Sjednat financování",
     },
   ];
 
@@ -35,8 +62,8 @@ const Services = () => {
             Nabídka služeb
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Poskytujeme komplexní realitní služby šité na míru vašim potřebám. 
-            S námi je každá transakce bezpečná a profesionální.
+            Poskytujeme komplexní realitní služby šité na míru vašim potřebám. S
+            námi je každá transakce bezpečná a profesionální.
           </p>
         </div>
 
@@ -64,8 +91,11 @@ const Services = () => {
                 <p className="text-gray-200 mb-6 text-sm md:text-base">
                   {service.description}
                 </p>
-                <button className="btn-primary w-full bg-secondary hover:bg-secondary/90">
-                  Sjednat schůzku
+                <button
+                  onClick={onOpenModal}
+                  className="btn-primary w-full bg-secondary hover:bg-secondary/90 text-center"
+                >
+                  {service.buttonText}
                 </button>
               </div>
             </div>

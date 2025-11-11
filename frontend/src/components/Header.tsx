@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-const Header = () => {
+type HeaderProps = {
+  onOpenModal: () => void;
+};
+
+const Header = ({ onOpenModal }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -23,12 +27,6 @@ const Header = () => {
               Domů
             </a>
             <a
-              href="#properties"
-              className="text-gray-700 hover:text-secondary transition-colors"
-            >
-              Nabídka
-            </a>
-            <a
               href="#about"
               className="text-gray-700 hover:text-secondary transition-colors"
             >
@@ -41,7 +39,7 @@ const Header = () => {
               Služby
             </a>
             <a
-              href="#contact"
+              href="#about"
               className="text-gray-700 hover:text-secondary transition-colors"
             >
               Kontakt
@@ -49,7 +47,7 @@ const Header = () => {
           </nav>
 
           {/* Contact Button */}
-          <button className="hidden md:block btn-primary">
+          <button onClick={onOpenModal} className="hidden md:block btn-primary">
             Kontaktujte nás
           </button>
 
