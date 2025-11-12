@@ -1,9 +1,17 @@
+import type { ServiceType } from "./PoptavkaModal";
+
 interface ServicesProps {
-  onOpenModal: () => void;
+  onOpenModal: (serviceType: ServiceType) => void;
 }
 
 const Services = ({ onOpenModal }: ServicesProps) => {
-  const services = [
+  const services: Array<{
+    title: string;
+    description: string;
+    image: string;
+    buttonText: string;
+    serviceType: ServiceType;
+  }> = [
     {
       title: "Prodej",
       description:
@@ -11,6 +19,7 @@ const Services = ({ onOpenModal }: ServicesProps) => {
       image:
         "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       buttonText: "Sjednat prodej",
+      serviceType: "sale",
     },
     {
       title: "Pronájem",
@@ -19,6 +28,7 @@ const Services = ({ onOpenModal }: ServicesProps) => {
       image:
         "https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       buttonText: "Sjednat pronájem",
+      serviceType: "rent",
     },
     {
       title: "Výkup",
@@ -27,6 +37,7 @@ const Services = ({ onOpenModal }: ServicesProps) => {
       image:
         "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       buttonText: "Sjednat výkup",
+      serviceType: "buyout",
     },
     {
       title: "Právní služby",
@@ -35,6 +46,7 @@ const Services = ({ onOpenModal }: ServicesProps) => {
       image:
         "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       buttonText: "Sjednat právní služby",
+      serviceType: "legal",
     },
     {
       title: "Advokátní úschova",
@@ -43,6 +55,7 @@ const Services = ({ onOpenModal }: ServicesProps) => {
       image:
         "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       buttonText: "Sjednat advokátní úschovu",
+      serviceType: "escrow",
     },
     {
       title: "Financování",
@@ -51,6 +64,7 @@ const Services = ({ onOpenModal }: ServicesProps) => {
       image:
         "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       buttonText: "Sjednat financování",
+      serviceType: "financing",
     },
   ];
 
@@ -92,7 +106,7 @@ const Services = ({ onOpenModal }: ServicesProps) => {
                   {service.description}
                 </p>
                 <button
-                  onClick={onOpenModal}
+                  onClick={() => onOpenModal(service.serviceType)}
                   className="btn-primary w-full bg-secondary hover:bg-secondary/90 text-center"
                 >
                   {service.buttonText}

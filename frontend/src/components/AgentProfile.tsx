@@ -1,7 +1,8 @@
 import agentPhoto from "../assets/photos/agent-1.png";
+import type { ServiceType } from "./PoptavkaModal";
 
 interface AgentProfileProps {
-  onOpenModal: () => void;
+  onOpenModal: (serviceType: ServiceType) => void;
 }
 
 const AgentProfile = ({ onOpenModal }: AgentProfileProps) => {
@@ -19,9 +20,9 @@ const AgentProfile = ({ onOpenModal }: AgentProfileProps) => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-10 -right-6 bg-secondary text-white p-6 rounded-lg shadow-lg">
-                <div className="text-3xl font-bold">100+</div>
-                <div className="text-sm">
+              <div className="absolute -bottom-8 right-2 md:-bottom-10 md:-right-6 bg-secondary text-white p-4 md:p-6 rounded-lg shadow-lg">
+                <div className="text-2xl md:text-3xl font-bold">100+</div>
+                <div className="text-xs md:text-sm">
                   Spokojených <br />
                   klientů
                 </div>
@@ -135,7 +136,10 @@ const AgentProfile = ({ onOpenModal }: AgentProfileProps) => {
                 </div>
               </div>
 
-              <button onClick={onOpenModal} className="btn-primary mt-8">
+              <button
+                onClick={() => onOpenModal("meeting")}
+                className="btn-primary mt-8"
+              >
                 Domluvit schůzku
               </button>
             </div>
