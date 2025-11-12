@@ -1,7 +1,8 @@
 import { useState } from "react";
+import type { ServiceType } from "./PoptavkaModal";
 
 type HeaderProps = {
-  onOpenModal: () => void;
+  onOpenModal: (serviceType: ServiceType) => void;
 };
 
 const Header = ({ onOpenModal }: HeaderProps) => {
@@ -17,39 +18,43 @@ const Header = ({ onOpenModal }: HeaderProps) => {
               ALEXANDR <span className="text-secondary">PLACHÝ</span>
             </h1>
           </div>
+          <div className="flex justify-center items-center gap-6">
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex space-x-8">
+              <a
+                href="#home"
+                className="text-gray-700 hover:text-secondary transition-colors"
+              >
+                Domů
+              </a>
+              <a
+                href="#about"
+                className="text-gray-700 hover:text-secondary transition-colors"
+              >
+                O nás
+              </a>
+              <a
+                href="#services"
+                className="text-gray-700 hover:text-secondary transition-colors"
+              >
+                Služby
+              </a>
+              <a
+                href="#about"
+                className="text-gray-700 hover:text-secondary transition-colors"
+              >
+                Kontakt
+              </a>
+            </nav>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            <a
-              href="#home"
-              className="text-gray-700 hover:text-secondary transition-colors"
+            {/* Contact Button */}
+            <button
+              onClick={() => onOpenModal("meeting")}
+              className="hidden md:block btn-primary"
             >
-              Domů
-            </a>
-            <a
-              href="#about"
-              className="text-gray-700 hover:text-secondary transition-colors"
-            >
-              O nás
-            </a>
-            <a
-              href="#services"
-              className="text-gray-700 hover:text-secondary transition-colors"
-            >
-              Služby
-            </a>
-            <a
-              href="#about"
-              className="text-gray-700 hover:text-secondary transition-colors"
-            >
-              Kontakt
-            </a>
-          </nav>
-
-          {/* Contact Button */}
-          <button onClick={onOpenModal} className="hidden md:block btn-primary">
-            Kontaktujte nás
-          </button>
+              Kontaktujte nás
+            </button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -86,35 +91,38 @@ const Header = ({ onOpenModal }: HeaderProps) => {
           <nav className="md:hidden mt-4 pb-4 space-y-3">
             <a
               href="#home"
+              onClick={() => setIsMenuOpen(false)}
               className="block text-gray-700 hover:text-secondary transition-colors"
             >
               Domů
             </a>
             <a
-              href="#properties"
-              className="block text-gray-700 hover:text-secondary transition-colors"
-            >
-              Nabídka
-            </a>
-            <a
               href="#about"
+              onClick={() => setIsMenuOpen(false)}
               className="block text-gray-700 hover:text-secondary transition-colors"
             >
               O nás
             </a>
             <a
               href="#services"
+              onClick={() => setIsMenuOpen(false)}
               className="block text-gray-700 hover:text-secondary transition-colors"
             >
               Služby
             </a>
             <a
-              href="#contact"
+              href="#about"
+              onClick={() => setIsMenuOpen(false)}
               className="block text-gray-700 hover:text-secondary transition-colors"
             >
               Kontakt
             </a>
-            <button className="btn-primary w-full">Kontaktujte nás</button>
+            <button
+              onClick={() => onOpenModal("meeting")}
+              className="btn-primary w-full"
+            >
+              Kontaktujte nás
+            </button>
           </nav>
         )}
       </div>

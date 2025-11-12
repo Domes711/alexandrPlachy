@@ -1,5 +1,7 @@
+import type { ServiceType } from "./PoptavkaModal";
+
 interface HeroProps {
-  onOpenModal: () => void;
+  onOpenModal: (serviceType: ServiceType) => void;
 }
 
 const Hero = ({ onOpenModal }: HeroProps) => {
@@ -27,50 +29,58 @@ const Hero = ({ onOpenModal }: HeroProps) => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
-        <h1 className="text-4xl md:text-6xl m-2 lg:text-7xl font-bold mb-6 leading-tight whitespace-nowrap">
-          <span className="text-secondary">Bezpečně</span> • Bezstarostě
-          <span className="text-secondary"> • Bezplatně</span>
+        <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight">
+          <span className="block md:inline">
+            <span className="text-secondary">Bezpečně</span>
+          </span>
+          <span className="block md:inline text-secondary"> • </span>
+          <span className="block md:inline">Bezstarostně</span>
+          <span className="block md:inline text-secondary"> • </span>
+          <span className="block md:inline text-secondary">Bezplatně</span>
         </h1>
-        <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto text-gray-200">
+        <p className="text-base md:text-xl lg:text-2xl mb-6 md:mb-8 max-w-3xl mx-auto text-gray-200">
           Neprezentujeme sebe, prezentujeme vaši nemovitost. <br />
           Férově, bez zbytečně velkých provizí.
         </p>
-        <div className="flex flex-col sm:flex-row gap-8 justify-center">
-          <button onClick={onOpenModal} className="btn-primary text-lg">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center">
+          <button
+            onClick={() => onOpenModal("sale")}
+            className="btn-primary text-base sm:text-lg py-3"
+          >
             Chci prodat
           </button>
           <button
-            onClick={onOpenModal}
-            className="btn-secondary text-lg bg-white bg-opacity-20 backdrop-blur-sm border-white hover:bg-white text-primary"
+            onClick={() => onOpenModal("rent")}
+            className="btn-secondary text-base sm:text-lg py-3 bg-white bg-opacity-20 backdrop-blur-sm border-white hover:bg-white text-primary"
           >
             Chci pronajmout
           </button>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 mt-16 max-w-3xl mx-auto">
+        <div className="grid grid-cols-3 gap-4 md:gap-8 mt-8 md:mt-16 max-w-3xl mx-auto">
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-secondary">
+            <div className="text-2xl md:text-4xl font-bold text-secondary">
               400+
             </div>
-            <div className="text-sm md:text-base text-gray-300 mt-2">
-              Pronajatých nemovitostí
+            <div className="text-xs md:text-base text-gray-300 mt-1 md:mt-2">
+              Pronajatých <br className="md:hidden" />nemovitostí
             </div>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-secondary">
+            <div className="text-2xl md:text-4xl font-bold text-secondary">
               100+
             </div>
-            <div className="text-sm md:text-base text-gray-300 mt-2">
-              Prodaných nemovitostí
+            <div className="text-xs md:text-base text-gray-300 mt-1 md:mt-2">
+              Prodaných <br className="md:hidden" />nemovitostí
             </div>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-secondary">
+            <div className="text-2xl md:text-4xl font-bold text-secondary">
               98%
             </div>
-            <div className="text-sm md:text-base text-gray-300 mt-2">
-              Zprostředkovaných prodejů
+            <div className="text-xs md:text-base text-gray-300 mt-1 md:mt-2">
+              Zprostředkovaných <br className="md:hidden" />prodejů
             </div>
           </div>
         </div>
