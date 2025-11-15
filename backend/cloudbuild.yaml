@@ -8,6 +8,12 @@ steps:
       - "."
     dir: "backend"
 
+  # Push the Docker image to Artifact Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "push"
+      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA"
+
   # Get frontend URL
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: "bash"
