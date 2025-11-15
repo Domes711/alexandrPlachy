@@ -4,15 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a React 19 + TypeScript + Vite frontend application showcasing Villa Milena, a real estate property in Hranice, Czech Republic. The project uses Emotion for CSS-in-JS styling, React Router for navigation, includes an authentication system, and features a modal-based contact form for service inquiries.
+This is a full-stack real estate agent portfolio application for Alexandr Plachy, consisting of:
+- **Frontend**: React 19 + TypeScript + Vite using Tailwind CSS
+- **Backend**: ASP.NET Core 9.0 Web API with email functionality
+
+The application showcases a real estate agent's services, properties, and provides contact forms for client inquiries. It features GDPR compliance modals, service inquiry forms, and professional email notifications.
 
 ## Development Commands
 
+### Frontend (React + Vite)
+
 ```bash
-# Navigate to frontend directory first
+# Navigate to frontend directory
 cd frontend
 
-# Start development server
+# Install dependencies
+npm install
+
+# Start development server (runs on http://localhost:5173)
 npm run dev
 
 # Build for production (runs TypeScript check + Vite build)
@@ -25,188 +34,190 @@ npm run lint
 npm run preview
 ```
 
+### Backend (.NET Core API)
+
+```bash
+# Navigate to backend directory
+cd backend
+
+# Restore NuGet packages
+dotnet restore
+
+# Build the project
+dotnet build
+
+# Run the API (default: http://localhost:5055 or https://localhost:7xxx)
+dotnet run
+
+# Run with hot reload during development
+dotnet watch run
+
+# Clean build artifacts
+dotnet clean
+```
+
+**Backend Configuration**: Email settings are configured in `appsettings.json`. Update SMTP credentials before running.
+
 ## Docker Deployment
 
 ```bash
-# Build and run with Docker (from project root)
-docker build -t villa-milena .
-docker run -p 8080:8080 villa-milena
+# Build and run frontend with Docker (from project root)
+docker build -t alexandr-plachy-frontend .
+docker run -p 8080:8080 alexandr-plachy-frontend
 
 # The Dockerfile uses multi-stage build:
 # 1. Node 18 builder stage (installs deps and builds)
 # 2. Nginx alpine stage (serves static files)
 ```
 
-The application is served via Nginx on port 8080 with SPA routing support (all routes fallback to index.html).
+The frontend is served via Nginx on port 8080 with SPA routing support (all routes fallback to index.html).
+
+**Note**: Backend does not currently have a Dockerfile. For production deployment, consider containerizing the .NET API separately.
 
 ## Architecture
 
-### Styling System
+### Frontend Stack
 
-**All styling uses Emotion CSS-in-JS** - do NOT create separate CSS files except for global styles in index.css.
+**Styling**: Tailwind CSS v4 with PostCSS
+- Utility-first CSS framework configured via `@tailwindcss/postcss`
+- Custom colors defined: primary (#1a1a1a), secondary/gold (#d4af37), accent (#2c3e50)
+- Responsive design using Tailwind's breakpoint system (sm, md, lg, xl)
+- Global styles and font imports in `src/index.css`
 
-Pattern:
-```typescript
-import styled from '@emotion/styled';
+**Form Handling**: React Hook Form v7
+- Used in modal forms (PoptavkaModal) for validation and state management
+- Integrates with TypeScript for type-safe form data
 
-const StyledComponent = styled('div')({
-  display: 'flex',
-  gap: 36,
-  '@media (max-width: 1000px)': {
-    flexDirection: 'column',
-  },
-});
-```
+**Data Fetching**: TanStack Query (React Query) v5
+- Configured in `main.tsx` with QueryClientProvider
+- Custom hook `useEmailMutation` for email API calls
+- Handles loading, success, and error states automatically
+- API service layer in `src/api/emailApi.ts`
 
-Key styling features:
-- Responsive design via media queries in styled objects
-- Dynamic props: `styled('div')<Props>(({ prop }: { prop: Type }) => ({ ... }))`
-- Animations integrated with Animate.css classes
-- Global fonts and CSS variables in `src/index.css`
+### Frontend Component Structure
 
-**Important TypeScript constraint**: When using styled components with props, always explicitly type the destructured parameters to avoid implicit `any` errors:
-```typescript
-// ✅ Correct
-const Button = styled('button')<{ variant?: string }>(({ variant }: { variant?: string }) => ({...}))
+- **App.tsx** - Main homepage with hero, services, agent profile, and footer
+- **pages/** - Route-specific page components:
+  - `Dotaznik.tsx` - Questionnaire page for property buyers
+  - `Poptavka.tsx` - Detailed inquiry form page
+- **components/** - Reusable UI components:
+  - `Header.tsx` - Navigation bar with logo and CTA button
+  - `Hero.tsx` - Homepage hero section with call-to-action
+  - `Services.tsx` - Service cards (buying, selling, evaluation)
+  - `AgentProfile.tsx` - Agent biography and credentials section
+  - `Footer.tsx` - Footer with contact info, social links, and legal links
+  - `PropertyCard.tsx` - Individual property listing card
+  - `PropertyList.tsx` - Grid of property cards
+  - `PoptavkaModal.tsx` - Service inquiry modal form (meeting, callback, evaluation)
+  - `GDPRModal.tsx` - GDPR policy information modal
+  - `TermsModal.tsx` - Terms and conditions modal
 
-// ❌ Wrong (will cause TS error)
-const Button = styled('button')<{ variant?: string }>(({ variant }) => ({...}))
-```
+### Modal System
 
-Also, use `as const` for CSS property values that TypeScript doesn't recognize as string literals:
-```typescript
-const Modal = styled('div')({
-  position: 'fixed' as const,  // Required for position
-  cursor: 'pointer' as const,  // Required for cursor
-  overflowY: 'auto' as const,  // Required for overflow
-});
-```
+**PoptavkaModal** (`components/PoptavkaModal.tsx`):
+- Three service types: "meeting", "callback", "evaluation"
+- Multi-step form with validation using React Hook Form
+- Fields: first name, last name, email, phone, optional note
+- Czech phone validation and email validation
+- Submits to backend API endpoint `/api/email/send`
+- Success/error states with user feedback
+- GDPR consent checkbox required
 
-### Component Structure
+**GDPRModal** (`components/GDPRModal.tsx`):
+- Displays complete GDPR compliance information
+- Details on data collection, storage, and rights
+- Opens from footer "Ochrana osobních údajů" link
 
-- **App.tsx** - Main application page containing the entire property showcase layout
-- **components/** - Reusable components:
-  - `DroneViewCard.tsx` - Hero section with video background
-  - `VirtualTour.tsx` - Interactive floor plan viewer
-  - `FeAuth.tsx` - Authentication wrapper using token validation
-  - `Modal.tsx` - Reusable modal overlay with animations
-  - `ContactForm.tsx` - Service inquiry form with validation
-  - `Box.tsx` - Interactive clickable overlay boxes
-  - `Card.tsx` - Generic content card component
+**TermsModal** (`components/TermsModal.tsx`):
+- Displays terms and conditions
+- Opens from footer "Obchodní podmínky" link
 
-### Modal & Form System
-
-The application includes a complete modal-based contact form system:
-
-**Modal Component** (`components/Modal.tsx`):
-- Reusable overlay with blur backdrop
-- Click-outside-to-close functionality
-- Close button with rotation animation
-- Fade-in and slide-up animations
-- Fully responsive
-
-**ContactForm Component** (`components/ContactForm.tsx`):
-- Fields: name, surname, email, phone
-- Real-time validation with error messages
-- Czech phone number validation (+420 format)
-- Email format validation
-- Success message on submission
-- Service name parameter display
-- Styled to match application theme
-
-**Integration Pattern in App.tsx**:
+**Integration Pattern**:
 ```typescript
 const [isModalOpen, setIsModalOpen] = useState(false);
-const [selectedService, setSelectedService] = useState<string>('');
+const [serviceType, setServiceType] = useState<ServiceType>("meeting");
 
-const handleOpenModal = (serviceName: string) => {
-  setSelectedService(serviceName);
+const handleOpenModal = (service: ServiceType) => {
+  setServiceType(service);
   setIsModalOpen(true);
 };
 
-// In JSX
-<ServiceButton onClick={() => handleOpenModal('Service Name')}>
-  Mám zájem
-</ServiceButton>
-
-<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-  <ContactForm serviceName={selectedService} onCancel={handleCloseModal} />
-</Modal>
+<PoptavkaModal
+  isOpen={isModalOpen}
+  onClose={handleCloseModal}
+  serviceType={serviceType}
+/>
 ```
 
-**Technology Cards**: Each of the 7 technology cards in the application has a "Mám zájem" (I'm interested) button that opens the modal with the service name pre-filled.
+### Backend Architecture (.NET Core Web API)
 
-### Custom Hooks
+**Technology Stack**:
+- ASP.NET Core 9.0 Web API
+- MailKit for SMTP email sending
+- Mjml.Net for HTML email template rendering
+- Swagger/OpenAPI for API documentation
 
-- **useInViewAnimation** - Triggers animations when elements enter viewport using IntersectionObserver
-  - Returns `{ ref, isVisible }`
-  - Animates once, then disconnects observer for performance
-  - Used with Animate.css classes: `className={isVisible ? 'animate__animated animate__fadeIn' : ''}`
-
-- **useVirtualTour** - Manages virtual tour state (floor selection)
-  - Returns `{ currentFloor, setCurrentFloor }`
-  - Types: `Room`, `Floor`, `House` for structured tour data
-
-### Authentication
-
-The FeAuth component validates access via URL query parameter:
-- Expects `?t=<token>` in URL
-- Hashes token with SHA256 (using crypto-js)
-- Compares against hardcoded hash
-- Redirects to `/unauthorized` on failure
-
-Usage:
-```typescript
-<FeAuth>
-  <ProtectedContent />
-</FeAuth>
+**Project Structure**:
+```
+backend/
+├── Controllers/
+│   └── EmailController.cs       # POST /api/email/send endpoint
+├── Services/
+│   ├── IEmailService.cs         # Email service interface
+│   └── EmailService.cs          # SMTP email sending implementation
+├── Models/
+│   ├── EmailRequest.cs          # API request model with validation
+│   └── EmailSettings.cs         # SMTP configuration model
+├── Templates/
+│   └── ContactEmailTemplate.mjml # MJML email template
+├── Program.cs                   # App configuration and DI setup
+└── appsettings.json             # Configuration (SMTP credentials)
 ```
 
-### State Management
+**Email Service**:
+- Sends contact inquiry emails via SMTP (currently configured for smtp.websupport.cz)
+- Uses MJML templates for responsive HTML emails
+- Template placeholders: `{{FirstName}}`, `{{LastName}}`, `{{Email}}`, `{{Phone}}`, `{{Service}}`, `{{Note}}`, `{{Timestamp}}`
+- Supports conditional sections (e.g., note only shown if provided)
+- Handles both SSL (port 465) and STARTTLS (port 587) connections
 
-This project uses **local component state only** - no Redux, Zustand, or global Context:
-- useState for component-level state (modal open/close, form data)
-- URL query parameters for authentication tokens
-- React Router hooks (useLocation, useNavigate) for navigation
+**API Endpoints**:
+- `POST /api/email/send` - Sends contact email
+  - Request body: `{ firstName, lastName, email, phone, service, note? }`
+  - Returns: `{ message: "Email sent successfully" }`
+  - Validation: required fields, email format, phone format
 
-If adding global state, prefer Context API for small apps or Redux Toolkit for complex state.
+**CORS Configuration**:
+- Allows frontend origins: `http://localhost:5173`, `http://localhost:8080`
+- Configured in `Program.cs` with policy name "AllowFrontend"
 
-### Routing
+**Swagger Documentation**:
+- Available at `/swagger` in development mode
+- Includes XML documentation comments for all endpoints
 
-React Router v7 is configured in `main.tsx` with BrowserRouter. Currently serves a single-page application, but structured for expansion.
+### State Management & Routing
 
-To add new routes:
-```typescript
-// In main.tsx or App.tsx
-<Routes>
-  <Route path="/" element={<App />} />
-  <Route path="/new-page" element={<NewPage />} />
-</Routes>
-```
+**State Management**: Uses local component state only (no Redux/Context):
+- `useState` for modal visibility, form data, service selection
+- React Hook Form manages form state in PoptavkaModal
 
-## TypeScript Configuration
+**Routing**: React Router v7 configured in `main.tsx`:
+- `/` - Main homepage (App.tsx)
+- `/dotaznik` - Property buyer questionnaire page
+- `/poptavka` - Detailed inquiry form page
+
+## TypeScript Configuration (Frontend)
 
 - Strict mode enabled (`strict: true`)
 - Target: ES2022
 - Module: ESNext with bundler resolution
-- React JSX transform (no need to import React)
-- `verbatimModuleSyntax: true` - requires type-only imports for types
+- React JSX transform (no import React needed)
 - Config split across:
   - `tsconfig.json` - Root config with references
   - `tsconfig.app.json` - Application code settings
   - `tsconfig.node.json` - Node/Vite config files
 
-**Important**: Due to `verbatimModuleSyntax`, use type-only imports for types:
-```typescript
-// ✅ Correct
-import { useState } from 'react';
-import type { ReactNode, FormEvent } from 'react';
-
-// ❌ Wrong (will cause TS error)
-import { useState, ReactNode, FormEvent } from 'react';
-```
-
-## ESLint Configuration
+## ESLint Configuration (Frontend)
 
 Modern flat config in `eslint.config.js`:
 - TypeScript ESLint rules
@@ -214,147 +225,216 @@ Modern flat config in `eslint.config.js`:
 - React Refresh rules (for Vite HMR)
 - Ignores `dist/` directory
 
-## External Resources
+## Common Development Patterns
 
-Images and videos are hosted on Google Cloud Storage:
-- Bucket: `milena-a`
-- Accessed via public URLs in components
-- Includes drone footage, floor plans, and property photos
+### Adding a New Modal
 
-## Common Patterns
-
-### Adding New Animated Section
-
-```typescript
-import { useInViewAnimation } from './hooks/useInViewAnimation';
-
-const { ref, isVisible } = useInViewAnimation();
-
-<Section
-  ref={ref}
-  className={isVisible ? 'animate__animated animate__fadeInUp' : ''}
->
-  Content
-</Section>
-```
-
-### Creating Styled Components with Props
-
-```typescript
-import styled from '@emotion/styled';
-
-// Always explicitly type the props parameter
-const Container = styled('div')<{ isActive: boolean }>(({ isActive }: { isActive: boolean }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 24,
-  padding: 48,
-  opacity: isActive ? 1 : 0.5,
-  '@media (max-width: 1000px)': {
-    padding: 24,
-    gap: 16,
-  },
-}));
-```
-
-### Adding Modal to a Component
-
-1. Import Modal and ContactForm:
-```typescript
-import { Modal } from './components/Modal';
-import { ContactForm } from './components/ContactForm';
-import { useState } from 'react';
-```
-
-2. Add state:
+1. Create modal state in parent component:
 ```typescript
 const [isModalOpen, setIsModalOpen] = useState(false);
-const [selectedItem, setSelectedItem] = useState<string>('');
+const handleOpenModal = () => setIsModalOpen(true);
+const handleCloseModal = () => setIsModalOpen(false);
 ```
 
-3. Create handlers:
+2. Render modal component:
 ```typescript
-const handleOpen = (itemName: string) => {
-  setSelectedItem(itemName);
-  setIsModalOpen(true);
+<PoptavkaModal
+  isOpen={isModalOpen}
+  onClose={handleCloseModal}
+  serviceType="meeting"
+/>
+```
+
+### Form Validation with React Hook Form
+
+PoptavkaModal demonstrates the pattern:
+```typescript
+import { useForm } from 'react-hook-form';
+
+const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+
+<input
+  {...register('email', {
+    required: 'Email je povinný',
+    pattern: {
+      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      message: 'Neplatný formát emailu'
+    }
+  })}
+/>
+{errors.email && <span>{errors.email.message}</span>}
+```
+
+### API Integration Pattern with React Query
+
+**API Service Layer** (`src/api/emailApi.ts`):
+```typescript
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+export const sendContactEmail = async (data: EmailRequest): Promise<EmailResponse> => {
+  const response = await fetch(`${API_BASE_URL}/api/email/send`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Server error: ${response.status}`);
+  }
+
+  return response.json();
+};
+```
+
+**Custom Hook** (`src/hooks/useEmailMutation.ts`):
+```typescript
+import { useMutation } from '@tanstack/react-query';
+
+export const useEmailMutation = () => {
+  return useMutation({
+    mutationFn: (data: EmailRequest) => sendContactEmail(data),
+  });
+};
+```
+
+**Component Usage** (in PoptavkaModal):
+```typescript
+const emailMutation = useEmailMutation();
+
+const onSubmit = (data: FormData) => {
+  emailMutation.mutate(
+    { firstName, lastName, email, phone, service, note },
+    {
+      onSuccess: () => setSubmitted(true),
+      onError: (error) => alert('Email send failed'),
+    }
+  );
 };
 
-const handleClose = () => {
-  setIsModalOpen(false);
-};
+// In JSX:
+<button disabled={emailMutation.isPending}>
+  {emailMutation.isPending ? "Odesílám..." : "Odeslat"}
+</button>
 ```
 
-4. Add to JSX:
+**Backend Endpoint**:
+```csharp
+[HttpPost("send")]
+public async Task<IActionResult> SendEmail([FromBody] EmailRequest request)
+{
+    await _emailService.SendContactEmailAsync(request);
+    return Ok(new { message = "Email sent successfully" });
+}
+```
+
+### Responsive Design with Tailwind
+
+Use Tailwind's responsive utilities:
 ```typescript
-<Modal isOpen={isModalOpen} onClose={handleClose}>
-  <ContactForm serviceName={selectedItem} onCancel={handleClose} />
-</Modal>
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  // Content adapts: 1 col mobile, 2 cols tablet, 3 cols desktop
+</div>
 ```
-
-### Form Validation Pattern
-
-The ContactForm includes built-in validation for:
-- Required fields (name, surname, email, phone)
-- Email format: `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`
-- Czech phone format: `/^(\+420)?[0-9]{9}$/`
-
-To extend validation, modify the `validateForm` function in ContactForm.tsx.
-
-### Responsive Design Breakpoints
-
-The application uses consistent breakpoints:
-- Desktop: default styles
-- Tablet/Mobile: `@media (max-width: 1000px)`
-- Mobile specific: `@media (max-width: 600px)`
-
-## Performance Notes
-
-- Intersection Observer used for lazy animations (better than scroll listeners)
-- Swiper library handles carousel optimizations
-- Vite provides fast HMR and optimized production builds
-- Nginx serves static assets with 1-year cache for fonts/images
 
 ## Project Structure
 
 ```
 alexandrPlachy/
-├── frontend/               # React application
+├── frontend/                          # React 19 + TypeScript + Vite
 │   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   │   ├── Modal.tsx           # Reusable modal overlay
-│   │   │   ├── ContactForm.tsx     # Service inquiry form
-│   │   │   ├── DroneViewCard.tsx   # Hero section
-│   │   │   ├── VirtualTour.tsx     # Floor plans
-│   │   │   ├── FeAuth.tsx          # Auth wrapper
-│   │   │   ├── Box.tsx             # Clickable boxes
-│   │   │   └── Card.tsx            # Generic card
-│   │   ├── hooks/          # Custom React hooks
-│   │   │   ├── useInViewAnimation.ts
-│   │   │   └── useVirtualTour.ts
-│   │   ├── assets/         # Images and media
-│   │   ├── App.tsx         # Main page component
-│   │   ├── main.tsx        # React entry point
-│   │   └── index.css       # Global styles
-│   ├── public/             # Static files
-│   ├── dist/               # Build output
-│   ├── package.json        # Dependencies
-│   ├── vite.config.ts      # Vite configuration
-│   ├── tsconfig.json       # TypeScript config
-│   └── eslint.config.js    # ESLint config
-├── Dockerfile              # Multi-stage Docker build
-├── nginx.conf              # Nginx server configuration
-└── .trello.env             # Trello API credentials (git-ignored)
+│   │   ├── api/                       # API service layer
+│   │   │   └── emailApi.ts            # Email API functions
+│   │   ├── components/                # UI components
+│   │   │   ├── Header.tsx             # Navigation bar
+│   │   │   ├── Hero.tsx               # Homepage hero
+│   │   │   ├── Services.tsx           # Service cards
+│   │   │   ├── AgentProfile.tsx       # Agent bio
+│   │   │   ├── Footer.tsx             # Footer with links
+│   │   │   ├── PropertyCard.tsx       # Property listing card
+│   │   │   ├── PropertyList.tsx       # Property grid
+│   │   │   ├── PoptavkaModal.tsx      # Inquiry form modal
+│   │   │   ├── GDPRModal.tsx          # GDPR info modal
+│   │   │   └── TermsModal.tsx         # Terms modal
+│   │   ├── hooks/                     # Custom React hooks
+│   │   │   └── useEmailMutation.ts    # React Query email mutation
+│   │   ├── pages/                     # Route pages
+│   │   │   ├── Dotaznik.tsx           # Questionnaire
+│   │   │   └── Poptavka.tsx           # Inquiry form
+│   │   ├── types/                     # TypeScript types
+│   │   ├── assets/                    # Static assets
+│   │   ├── App.tsx                    # Main homepage
+│   │   ├── main.tsx                   # React entry + routing + React Query
+│   │   ├── App.css                    # Component styles
+│   │   └── index.css                  # Global styles
+│   ├── .env.local                     # Environment variables (gitignored)
+│   ├── .env.example                   # Environment variables template
+│   ├── package.json                   # NPM dependencies
+│   ├── vite.config.ts                 # Vite config
+│   ├── tailwind.config.js             # Tailwind config
+│   ├── tsconfig.json                  # TS root config
+│   ├── tsconfig.app.json              # TS app config
+│   └── eslint.config.js               # ESLint config
+│
+├── backend/                           # ASP.NET Core 9.0 Web API
+│   ├── Controllers/
+│   │   └── EmailController.cs         # Email API endpoint
+│   ├── Services/
+│   │   ├── IEmailService.cs           # Email service interface
+│   │   └── EmailService.cs            # SMTP implementation
+│   ├── Models/
+│   │   ├── EmailRequest.cs            # Request DTO
+│   │   └── EmailSettings.cs           # Config model
+│   ├── Templates/
+│   │   └── ContactEmailTemplate.mjml  # Email template
+│   ├── Program.cs                     # API setup and DI
+│   ├── appsettings.json               # Configuration
+│   ├── backend.csproj                 # .NET project file
+│   └── backend.sln                    # Solution file
+│
+├── Dockerfile                         # Frontend Docker build
+├── nginx.conf                         # Nginx config for frontend
+└── .trello.env                        # Trello credentials (ignored)
 ```
 
-## Trello Integration
+## Important Notes
 
-The project uses Trello for task management. API credentials are stored in `.trello.env`:
-```
-TRELLO_API_KEY=<key>
-TRELLO_API_TOKEN=<token>
-```
+### Environment Variables
+Frontend uses Vite environment variables (prefix: `VITE_`):
+- `VITE_API_URL` - Backend API URL (default: `http://localhost:5000`)
+- Copy `.env.example` to `.env.local` and configure as needed
+- `.env.local` is gitignored for local development
 
-Tasks can be fetched via Trello REST API at:
-```
-https://api.trello.com/1/cards/{cardId}?key={apiKey}&token={token}
-```
+### Email Configuration
+- Backend email settings are in `backend/appsettings.json`
+- **IMPORTANT**: Contains production SMTP credentials - do not commit changes to this file
+- Current configuration uses smtp.websupport.cz on port 465 (SSL)
+- Recipient email is currently set to test@alexandrplachy.cz
+
+### CORS Configuration
+- Backend allows requests from `http://localhost:5173`, `http://localhost:5177` (Vite dev), and `http://localhost:8080` (Docker)
+- Backend runs on port 5000 by default
+- Update CORS policy in `backend/Program.cs` when deploying to production or if using different ports
+
+### Testing the Email Flow
+1. Start backend: `cd backend && dotnet run`
+   - Backend will run on http://localhost:5000
+2. Start frontend: `cd frontend && npm run dev`
+   - Frontend will run on http://localhost:5173 (or next available port)
+3. Open frontend in browser
+4. Click "Mám zájem" button on any service card
+5. Fill out the modal form (all fields required except note)
+6. Click "Odeslat poptávku" button
+7. Watch for:
+   - Button text changes to "Odesílám..." while loading
+   - Success modal appears on successful submission
+   - Backend logs show email sending confirmation
+   - Check email inbox for received message
+
+### Trello Integration
+Project uses Trello for task management. Credentials stored in `.trello.env` (git-ignored).
+
+### Czech Language
+The application is in Czech language (cs-CZ):
+- Modal text, form labels, validation messages all in Czech
+- Button text: "Mám zájem" (I'm interested), "Odeslat" (Send)
+- GDPR and terms content in Czech
