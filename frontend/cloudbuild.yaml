@@ -1,0 +1,50 @@
+steps:
+  # Get backend URL
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        echo "Getting backend URL..."
+        BACKEND_URL=$(gcloud run services describe alexandrplachy-backend --region=europe-west1 --format='value(status.url)' 2>/dev/null || echo "https://alexandrplachy-backend-placeholder.run.app")
+        echo "Backend URL: $BACKEND_URL"
+        echo "$BACKEND_URL" > /workspace/backend_url.txt
+
+  # Build the Docker image with backend URL
+  - name: "gcr.io/cloud-builders/docker"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        BACKEND_URL=$(cat /workspace/backend_url.txt)
+        echo "Building with VITE_API_URL=$BACKEND_URL"
+        docker build \
+          --build-arg VITE_API_URL=$BACKEND_URL \
+          -t europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA \
+          .
+    dir: "frontend"
+
+  # Deploy to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - "run"
+      - "deploy"
+      - "alexandrplachy-frontend"
+      - "--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA"
+      - "--region=europe-west1"
+      - "--platform=managed"
+      - "--port=8080"
+      - "--cpu=1"
+      - "--memory=512Mi"
+      - "--max-instances=3"
+      - "--allow-unauthenticated"
+
+# Store the built images
+images:
+  - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA"
+
+# Build options
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: "E2_HIGHCPU_8"
