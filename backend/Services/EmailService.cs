@@ -63,20 +63,26 @@ public class EmailService : IEmailService
             // Send email
             using var client = new SmtpClient();
 
-            // Determine secure socket options based on port and UseSsl setting
+            // Determine secure socket options based on port
             SecureSocketOptions secureSocketOptions;
-            if (!_emailSettings.UseSsl)
-            {
-                secureSocketOptions = SecureSocketOptions.None;
-            }
-            else if (_emailSettings.SmtpPort == 465)
+            if (_emailSettings.SmtpPort == 465)
             {
                 // Port 465 uses implicit SSL (SSL from the start)
                 secureSocketOptions = SecureSocketOptions.SslOnConnect;
             }
+            else if (_emailSettings.SmtpPort == 587)
+            {
+                // Port 587 uses STARTTLS (upgrade connection to SSL)
+                secureSocketOptions = SecureSocketOptions.StartTls;
+            }
+            else if (!_emailSettings.UseSsl)
+            {
+                // No encryption (not recommended)
+                secureSocketOptions = SecureSocketOptions.None;
+            }
             else
             {
-                // Port 587 and others use STARTTLS (upgrade connection to SSL)
+                // Default to STARTTLS for other ports with SSL enabled
                 secureSocketOptions = SecureSocketOptions.StartTls;
             }
 
