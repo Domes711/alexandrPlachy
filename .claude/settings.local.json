@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.trello.com)",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)",
+      "Bash(mkdir:*)",
+      "Bash(dotnet add package:*)",
+      "Bash(dotnet add:*)",
+      "Bash(dotnet build:*)",
+      "Bash(curl:*)",
+      "Bash(dotnet clean:*)",
+      "Bash(dotnet restore:*)",
+      "Bash(dotnet remove:*)",
+      "Bash(dotnet list:*)",
+      "WebSearch",
+      "WebFetch(domain:faq.active24.com)",
+      "Bash(dotnet run:*)",
+      "Bash(npm run dev:*)",
+      "Bash(taskkill:*)",
+      "Bash(docker build:*)",
+      "WebFetch(domain:trello.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

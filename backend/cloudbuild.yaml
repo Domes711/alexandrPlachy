@@ -1,0 +1,52 @@
+steps:
+  # Build the Docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      - "-t"
+      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA"
+      - "."
+    dir: "backend"
+
+  # Get frontend URL
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        echo "Getting frontend URL..."
+        FRONTEND_URL=$(gcloud run services describe alexandrplachy-frontend --region=europe-west1 --format='value(status.url)' 2>/dev/null || echo "")
+        echo "Frontend URL: $FRONTEND_URL"
+        echo "$FRONTEND_URL" > /workspace/frontend_url.txt
+
+  # Deploy to Cloud Run with frontend URL
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        FRONTEND_URL=$(cat /workspace/frontend_url.txt)
+        ENV_VARS="ASPNETCORE_ENVIRONMENT=Production"
+        if [ ! -z "$FRONTEND_URL" ]; then
+          ENV_VARS="$ENV_VARS,FRONTEND_URL=$FRONTEND_URL"
+          echo "Deploying with FRONTEND_URL=$FRONTEND_URL"
+        fi
+        gcloud run deploy alexandrplachy-backend \
+          --image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA \
+          --region=europe-west1 \
+          --platform=managed \
+          --port=5000 \
+          --cpu=1 \
+          --memory=512Mi \
+          --max-instances=1 \
+          --allow-unauthenticated \
+          --set-env-vars="$ENV_VARS"
+
+# Store the built images
+images:
+  - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA"
+
+# Build options
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: "E2_HIGHCPU_8"
