@@ -15,9 +15,9 @@ steps:
       - "-c"
       - |
         echo "Getting frontend URL..."
-        FRONTEND_URL=$(gcloud run services describe alexandrplachy-frontend --region=europe-west1 --format='value(status.url)' 2>/dev/null || echo "")
-        echo "Frontend URL: $FRONTEND_URL"
-        echo "$FRONTEND_URL" > /workspace/frontend_url.txt
+        FRONTEND_URL=$$(gcloud run services describe alexandrplachy-frontend --region=europe-west1 --format='value(status.url)' 2>/dev/null || echo "")
+        echo "Frontend URL: $$FRONTEND_URL"
+        echo "$$FRONTEND_URL" > /workspace/frontend_url.txt
 
   # Deploy to Cloud Run with frontend URL
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -25,11 +25,11 @@ steps:
     args:
       - "-c"
       - |
-        FRONTEND_URL=$(cat /workspace/frontend_url.txt)
+        FRONTEND_URL=$$(cat /workspace/frontend_url.txt)
         ENV_VARS="ASPNETCORE_ENVIRONMENT=Production"
-        if [ ! -z "$FRONTEND_URL" ]; then
-          ENV_VARS="$ENV_VARS,FRONTEND_URL=$FRONTEND_URL"
-          echo "Deploying with FRONTEND_URL=$FRONTEND_URL"
+        if [ ! -z "$$FRONTEND_URL" ]; then
+          ENV_VARS="$$ENV_VARS,FRONTEND_URL=$$FRONTEND_URL"
+          echo "Deploying with FRONTEND_URL=$$FRONTEND_URL"
         fi
         gcloud run deploy alexandrplachy-backend \
           --image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA \
@@ -40,7 +40,7 @@ steps:
           --memory=512Mi \
           --max-instances=1 \
           --allow-unauthenticated \
-          --set-env-vars="$ENV_VARS"
+          --set-env-vars="$$ENV_VARS"
 
 # Store the built images
 images:

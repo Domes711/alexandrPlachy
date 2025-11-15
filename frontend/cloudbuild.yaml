@@ -6,9 +6,9 @@ steps:
       - "-c"
       - |
         echo "Getting backend URL..."
-        BACKEND_URL=$(gcloud run services describe alexandrplachy-backend --region=europe-west1 --format='value(status.url)' 2>/dev/null || echo "https://alexandrplachy-backend-placeholder.run.app")
-        echo "Backend URL: $BACKEND_URL"
-        echo "$BACKEND_URL" > /workspace/backend_url.txt
+        BACKEND_URL=$$(gcloud run services describe alexandrplachy-backend --region=europe-west1 --format='value(status.url)' 2>/dev/null || echo "https://alexandrplachy-backend-placeholder.run.app")
+        echo "Backend URL: $$BACKEND_URL"
+        echo "$$BACKEND_URL" > /workspace/backend_url.txt
 
   # Build the Docker image with backend URL
   - name: "gcr.io/cloud-builders/docker"
@@ -16,10 +16,10 @@ steps:
     args:
       - "-c"
       - |
-        BACKEND_URL=$(cat /workspace/backend_url.txt)
-        echo "Building with VITE_API_URL=$BACKEND_URL"
+        BACKEND_URL=$$(cat /workspace/backend_url.txt)
+        echo "Building with VITE_API_URL=$$BACKEND_URL"
         docker build \
-          --build-arg VITE_API_URL=$BACKEND_URL \
+          --build-arg VITE_API_URL=$$BACKEND_URL \
           -t europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA \
           .
     dir: "frontend"
