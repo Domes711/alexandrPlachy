@@ -96,7 +96,7 @@ public class EmailService : IEmailService
 
             if (!string.IsNullOrEmpty(_emailSettings.Username) && !string.IsNullOrEmpty(_emailSettings.Password))
             {
-                await client.AuthenticateAsync(_emailSettings.Username, _emailSettings.Password);
+                await client.AuthenticateAsync("web@alexandrplachy.cz", "%~ToB)Lq![7TQ[Wz|&nZ");
                 _logger.LogInformation("Authentication successful");
             }
 
