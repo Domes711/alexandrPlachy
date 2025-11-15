@@ -4,7 +4,7 @@ steps:
     args:
       - "build"
       - "-t"
-      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA"
+      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA:latest"
       - "."
     dir: "backend"
 
@@ -12,7 +12,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args:
       - "push"
-      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA"
+      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA:latest"
 
   # Get frontend URL
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -21,7 +21,7 @@ steps:
       - "-c"
       - |
         echo "Getting frontend URL..."
-        FRONTEND_URL=$$(gcloud run services describe alexandrplachy-frontend --region=europe-west1 --format='value(status.url)' 2>/dev/null || echo "")
+        FRONTEND_URL=$$(gcloud run services describe frontend --region=europe-west1 --format='value(status.url)' 2>/dev/null || echo "")
         echo "Frontend URL: $$FRONTEND_URL"
         echo "$$FRONTEND_URL" > /workspace/frontend_url.txt
 
@@ -37,8 +37,8 @@ steps:
           ENV_VARS="$$ENV_VARS,FRONTEND_URL=$$FRONTEND_URL"
           echo "Deploying with FRONTEND_URL=$$FRONTEND_URL"
         fi
-        gcloud run deploy alexandrplachy-backend \
-          --image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA \
+        gcloud run deploy backend \
+          --image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA:latest \
           --region=europe-west1 \
           --platform=managed \
           --port=5000 \
@@ -50,7 +50,7 @@ steps:
 
 # Store the built images
 images:
-  - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA"
+  - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA:latest"
 
 # Build options
 options:
