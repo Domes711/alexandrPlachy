@@ -2,9 +2,6 @@
 # Root .gitignore
 # ===========================
 
-# Trello credentials
-.trello.env
-
 # Environment variables
 .env
 .env.local
