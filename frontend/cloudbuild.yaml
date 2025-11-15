@@ -20,7 +20,7 @@ steps:
         echo "Building with VITE_API_URL=$$BACKEND_URL"
         docker build \
           --build-arg VITE_API_URL=$$BACKEND_URL \
-          -t europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA:latest \
+          -t europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA \
           .
     dir: "frontend"
 
@@ -28,7 +28,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args:
       - "push"
-      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA:latest"
+      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA"
 
   # Deploy to Cloud Run
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -37,7 +37,7 @@ steps:
       - "run"
       - "deploy"
       - "frontend"
-      - "--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA:latest"
+      - "--image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA"
       - "--region=europe-west1"
       - "--platform=managed"
       - "--port=8080"
@@ -48,7 +48,7 @@ steps:
 
 # Store the built images
 images:
-  - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA:latest"
+  - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/frontend/$SHORT_SHA"
 
 # Build options
 options:

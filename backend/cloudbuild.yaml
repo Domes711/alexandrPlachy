@@ -4,7 +4,7 @@ steps:
     args:
       - "build"
       - "-t"
-      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA:latest"
+      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA"
       - "."
     dir: "backend"
 
@@ -12,7 +12,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args:
       - "push"
-      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA:latest"
+      - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA"
 
   # Get frontend URL
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -38,7 +38,7 @@ steps:
           echo "Deploying with FRONTEND_URL=$$FRONTEND_URL"
         fi
         gcloud run deploy backend \
-          --image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA:latest \
+          --image=europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA \
           --region=europe-west1 \
           --platform=managed \
           --port=5000 \
@@ -50,7 +50,7 @@ steps:
 
 # Store the built images
 images:
-  - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA:latest"
+  - "europe-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/backend/$SHORT_SHA"
 
 # Build options
 options:
