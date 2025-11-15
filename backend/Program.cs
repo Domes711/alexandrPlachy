@@ -41,15 +41,22 @@ builder.Services.AddCors(options =>
     {
         var allowedOrigins = new List<string>
         {
+            // Local development
             "http://localhost:5173",
             "http://localhost:5174",
             "http://localhost:5175",
             "http://localhost:5176",
             "http://localhost:5177",
-            "http://localhost:8080"
+            "http://localhost:8080",
+
+            // Production domains
+            "https://alexandrplachy.cz",
+            "https://www.alexandrplachy.cz",
+            "http://alexandrplachy.cz",
+            "http://www.alexandrplachy.cz"
         };
 
-        // Add production frontend URL from environment variable
+        // Add production frontend URL from environment variable (if needed)
         var frontendUrl = builder.Configuration["FRONTEND_URL"];
         if (!string.IsNullOrEmpty(frontendUrl))
         {
