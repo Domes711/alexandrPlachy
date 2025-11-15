@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useEmailMutation } from "../hooks/useEmailMutation";
 import AgentPhoto from "../assets/photos/agent-2.png";
 
 export type ServiceType =
@@ -42,6 +43,7 @@ export default function PoptavkaModal({
   serviceType,
 }: PoptavkaModalProps) {
   const [submitted, setSubmitted] = useState(false);
+  const emailMutation = useEmailMutation();
 
   const {
     register,
@@ -88,8 +90,28 @@ export default function PoptavkaModal({
   if (!isOpen) return null;
 
   const onSubmit = (data: PoptavkaFormData) => {
-    console.log(data);
-    setSubmitted(true);
+    emailMutation.mutate(
+      {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        service: serviceTranslations[serviceType],
+        note: data.notes || undefined,
+      },
+      {
+        onSuccess: () => {
+          setSubmitted(true);
+          reset();
+        },
+        onError: (error) => {
+          console.error("Failed to send email:", error);
+          alert(
+            "Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo nás kontaktujte přímo."
+          );
+        },
+      }
+    );
   };
 
   const handleClose = () => {
@@ -360,9 +382,10 @@ export default function PoptavkaModal({
               <div className="px-6 md:px-8 lg:px-12 py-4 lg:py-6 border-t border-gray-200 bg-white">
                 <button
                   type="submit"
-                  className="btn-primary w-full text-lg py-4"
+                  disabled={emailMutation.isPending}
+                  className="btn-primary w-full text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Odeslat poptávku
+                  {emailMutation.isPending ? "Odesílám..." : "Odeslat poptávku"}
                 </button>
               </div>
             </form>
@@ -513,9 +536,9 @@ export default function PoptavkaModal({
                 <div className="pt-6 border-t border-white/20">
                   <p className="text-gray-300 text-sm leading-relaxed">
                     Profesionální realitní služby s osobním přístupem.
-                    <div className="text-secondary">
-                      Bezpečně • Bezstarostně • Férově
-                    </div>
+                  </p>
+                  <p className="text-secondary text-sm mt-1">
+                    Bezpečně • Bezstarostně • Férově
                   </p>
                 </div>
               </div>

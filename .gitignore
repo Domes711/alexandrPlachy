@@ -1,2 +1,56 @@
-node_modules/
+# ===========================
+# Root .gitignore
+# ===========================
+
+# Trello credentials
+.trello.env
+
+# Environment variables
 .env
+.env.local
+.env.*.local
+
+# Old Docker files (moved to subdirectories)
+# Keeping these here for cleanup - can remove later
+# Dockerfile
+# nginx.conf
+
+# OS Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE and Editor
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Cloud Build local test files
+.cloud-build/
+
+# Google Cloud credentials
+*.json
+!package.json
+!package-lock.json
+!tsconfig*.json
+
+# Secrets and credentials
+*secret*
+*credential*
+*password*
+appsettings.Production.json
